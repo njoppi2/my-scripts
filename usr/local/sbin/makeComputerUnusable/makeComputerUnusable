@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+export DISPLAY=:0.0
+
+result=$(cat /usr/local/sbin/shouldComputerBecomeUnusableToday.txt)
+if [[ "$result" == yes ]]
+then
+        wmctrl -k on
+	sleep 30
+	gnome-screensaver-command -l
+	wmctrl -k on
+	nmcli radio wifi off
+else
+        echo diferenteDeYes
+fi
+
+
