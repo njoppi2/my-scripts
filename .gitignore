@@ -13,6 +13,12 @@
 # Whitelist specific file(s) in /etc/ folder.
 !/etc/crontab
 
+!/home/
+/home/*
+!/home/njoppi2/
+/home/njoppi2/*
+!/home/njoppi2/.bashrc
+
 
 !/usr/
 /usr/*
@@ -21,6 +27,10 @@
 !/usr/local/sbin/
 !usr/local/bin/
 
+!/root/
+/root/*
+!/root/.bashrc
+
 !/var/
 /var/*
 !/var/spool/
@@ -28,3 +38,4 @@
 !/var/spool/cron/
 /var/spool/cron/*
 !/var/spool/cron/crontabs/
+
