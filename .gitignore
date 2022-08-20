@@ -21,3 +21,10 @@
 !/usr/local/sbin/
 !usr/local/bin/
 
+!/var/
+/var/*
+!/var/spool/
+/var/spool/*
+!/var/spool/cron/
+/var/spool/cron/*
+!/var/spool/cron/crontabs/
