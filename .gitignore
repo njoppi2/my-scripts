@@ -1,0 +1,16 @@
+# from https://askubuntu.com/questions/916918/creating-a-git-repo-at-root-for-tracking-settings
+
+# Whitelist the /usr/ folder (the git repo folder is whitelisted always)
+!/etc/
+# Blacklist all files in /etc/ folder.
+/etc/*
+# Whitelist specific file(s) in /etc/ folder.
+!/etc/crontab
+
+
+!/usr/
+/usr/*
+!/usr/local/
+/usr/local/*
+!/usr/local/sbin/
+!usr/local/bin/
