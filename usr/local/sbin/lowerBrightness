@@ -1,0 +1,2 @@
+#!/bin/bash
+brightnessctl -d nv_backlight set 5%

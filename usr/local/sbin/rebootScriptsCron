@@ -1,0 +1,4 @@
+#!/bin/bash
+brightnessctl -d nv_backlight set 100%
+echo "yes" > /usr/local/sbin/makeComputerUnusable/shouldComputerBecomeUnusableToday.txt
+/usr/local/sbin/uploadToNotion/uploadDayToNotion

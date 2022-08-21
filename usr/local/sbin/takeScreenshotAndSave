@@ -1,0 +1,30 @@
+#!/usr/bin/bash
+
+export DISPLAY=":0.0"
+
+myYear=$(date +'%Y')
+myMonth=$(date +'%m')
+myDay=$(date +'%d')
+
+if [ 7 -gt $(date +'%H') ]; then
+	# note the difference between ${} and $(())
+	DIR="/home/njoppi2/Pictures/dailyPrints/${myYear}:${myMonth}:$(($myDay-1))/"
+	echo "antes das 7"
+else
+	DIR="/home/njoppi2/Pictures/dailyPrints/${myYear}:${myMonth}:${myDay}/"
+	echo "dps das 7"
+fi
+
+if [ -d "$DIR" ]; then
+  ### Take action if $DIR exists ###
+  echo "Put print in existing folder"
+else
+  ###  Control will jump here if $DIR does NOT exists ###
+  mkdir -p $DIR
+  chmod 777 -R $DIR
+  echo "new DIR created"
+fi
+echo $DIR
+
+scrot -b -z '%Y:%m:%d--%H:%M:%S.png' -e 'mv $f '${DIR}
+
