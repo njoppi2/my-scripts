@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+port=$(cat /usr/local/bin/webhooks/myPort.txt)
+
+webhook -hooks /usr/local/bin/webhooks/hooks.json -verbose -port "$port"

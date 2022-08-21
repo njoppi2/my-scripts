@@ -1,0 +1,7 @@
+[
+  {
+    "id": "shutdown",
+    "execute-command": "/usr/local/bin/webhooks/shutdown.sh",
+    "command-working-directory": "/home/njoppi2"
+  }
+]

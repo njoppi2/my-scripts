@@ -11,7 +11,9 @@
 # Blacklist all files in /etc/ folder.
 /etc/*
 # Whitelist specific file(s) in /etc/ folder.
-!/etc/crontab
+!/etc/supervisor
+/etc/supervisor/*
+!/etc/supervisor/conf.d
 
 !/home/
 /home/*
@@ -25,7 +27,10 @@
 !/usr/local/
 /usr/local/*
 !/usr/local/sbin/
-!usr/local/bin/
+!/usr/local/bin/
+/usr/local/bin/*
+!/usr/local/bin/webhooks/
+/usr/local/bin/webhooks/*.txt
 
 !/root/
 /root/*
