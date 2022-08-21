@@ -19,6 +19,9 @@ I wanted to be able to say commands to the google assistant on my phone, and int
 
 Sometimes I had the problem of not knowing how I had spent my time during a day or even week, so I created this to help me remember. The idea is very simple, a crontab job that takes a screenshot of my screen every 20m, and saves it inside a folder named with the current date. On startup I upload to a website called Notion the current date, so I can keep track of the days I have screenshots and uploaded them there later.
 
+### unusable computer
+
+I really dislike to forget the time, and have to cook dinner too late at night. A time that works for me is at around 10h30 PM, so I created a script with the intention of making it easier for me to cook at that time than to keep using the computer. The script executes every 30s between 10h30 PM and 11h00 PM, minimizing all the windows, and disabling wi-fi. If I'm busy and really need to use the computer during that time, it can turned off.
 
 
 
