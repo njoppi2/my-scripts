@@ -2,12 +2,12 @@
 
 NOTION_KEY="secret_A2rAJHXnbXcOcHddXSW293v48bwQn8fABIgLt51iZLL"
 NOTION_DATABASE_ID="99c973f7141c44e1b90842c5fe44965a"
-result=$(cat /usr/local/sbin/lastDayUploadedToNotion.txt)
+result=$(cat /usr/local/sbin/uploadToNotion/lastDayUploadedToNotion.txt)
 
 today=$(date +'%Y:%m:%d')
 if [ "$result" != $today ] && [ $(id -u) -eq 0 ]
 then
-	echo $today > /usr/local/sbin/lastDayUploadedToNotion.txt
+	echo $today > /usr/local/sbin/uploadToNotion/lastDayUploadedToNotion.txt
 	curl -X POST https://api.notion.com/v1/pages \
 	  -H "Authorization: Bearer $NOTION_KEY" \
 	  -H "Content-Type: application/json" \

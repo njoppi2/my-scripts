@@ -1,4 +1,3 @@
 #!/bin/bash
 
-#shutdown now
-gnome-terminal
+shutdown now
