@@ -1,4 +1,4 @@
-# myScripts
+# my-scripts
 
 A git repository created at the root (/) of my computer, with a .gitignore whitelisting only files with scripts and settings that don't contain personal information.
 
