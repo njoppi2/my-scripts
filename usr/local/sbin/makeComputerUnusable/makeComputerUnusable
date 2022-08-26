@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 export DISPLAY=:0.0
 
-result=$(cat /usr/local/sbin/shouldComputerBecomeUnusableToday.txt)
+result=$(cat /usr/local/sbin/makeComputerUnusable/shouldComputerBecomeUnusableToday.txt)
 if [[ "$result" == yes ]]
 then
         wmctrl -k on
