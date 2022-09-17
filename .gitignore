@@ -25,6 +25,12 @@
 /home/njoppi2/*
 !/home/njoppi2/.bashrc
 
+!/home/njoppi2/projetos/
+/home/njoppi2/projetos/*
+!/home/njoppi2/projetos/pessoal/
+/home/njoppi2/projetos/pessoal/*
+!/home/njoppi2/projetos/pessoal/backup/
+
 
 !/usr/
 /usr/*

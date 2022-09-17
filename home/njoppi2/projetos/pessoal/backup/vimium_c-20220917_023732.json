@@ -1,0 +1,52 @@
+{
+	"name": "Vimium C",
+	"@time": "9/17/2022, 2:37:32 AM",
+	"time": 1663393052043,
+	"environment": {
+		"extension": "1.99.3",
+		"platform": "linux",
+		"chromium": "104"
+	},
+	"allBrowserUrls": true,
+	"exclusionRules": [
+		{
+			"passKeys": "",
+			"pattern": ":https://mail.google.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":/?{}&%$*#@!()_+\"|<>:/"
+		}
+	],
+	"keyMappings": [
+		"#!no-check",
+		"map s scrollPageUp",
+		"unmap i",
+		"map i focusInput",
+		"unmap r",
+		"map r goToRoot",
+		"unmap t",
+		"map t goUp",
+		"map <a-s-t> restoreTab",
+		"unmap F",
+		"mapkey F f",
+		"",
+		"unmap h",
+		"unmap v",
+		"unmap x",
+		"unmap b",
+		"unmap m",
+		"unmap p",
+		"unmap o",
+		"",
+		"env yt host=\"https://www.youtube.com/\"",
+		"",
+		"map v runKey expect={\"yt\":\"<v-ytv>\"} keys=\"<v-v>\"",
+		"map <v-ytv> openUrl url=\"https://www.youtube.com/feed/subscriptions\" url_mask=\"$url\" reuse=0",
+		"map b runKey expect={\"yt\":\"<v-ytb>\"} keys=\"<v-b>\"",
+		"map <v-ytb> openUrl url=\"https://studio.youtube.com/channel/UCR2IClUxeAl0WgzPyjp9p5A/videos/upload?filter=%5B%5D&sort=%7B%22columnType%22%3A%22date%22%2C%22sortOrder%22%3A%22DESCENDING%22%7D\" url_mask=\"$url\" reuse=0",
+		""
+	],
+	"linkHintCharacters": "6578[];=-ybtu\\'vngh,.091234qweriopasdjklçzxcm",
+	"vimSync": true
+}
