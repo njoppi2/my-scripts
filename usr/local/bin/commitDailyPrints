@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+myDate=$(date)
+
+cd /home/njoppi2/Pictures/dailyPrints
+
+/usr/bin/git add .
+/usr/bin/git commit -m "commit all prints until ${myDate}"
+/usr/bin/git push -u origin main
+
