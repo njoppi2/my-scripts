@@ -17,7 +17,7 @@ I wanted to be able to say commands to the Google Assistant on my phone, and int
 
 ### 📸 Screenshots
 
-Sometimes I had the problem of not knowing how I had spent my time during a day or even week, so I created this to help me remember. The idea is very simple, a crontab job that takes a screenshot of my screen every 20 min, and saves it inside a folder named with the current date. On startup I upload to a website called Notion the current date, so I can keep track of the days I have screenshots and uploaded them there later.
+Sometimes I had the problem of not knowing how I had spent my time during a day or even week, so I created this to help me remember. The idea is very simple, a crontab job that takes a screenshot of my screen every 20 min, and saves it inside a folder named with the current date. On startup I upload to a website called Notion the current date, so I can keep track of the days I have screenshots and upload them there later.
 
 ### ⛔ Unusable computer
 
