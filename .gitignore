@@ -41,7 +41,9 @@
 /usr/local/sbin/makeComputerUnusable/*.txt
 
 !/usr/local/bin/
-/usr/local/bin/webhooks/*.txt
+/usr/local/bin/*
+!/usr/local/bin/myScripts/
+/usr/local/bin/myScripts/webhooks/*.txt
 
 
 !/root/
