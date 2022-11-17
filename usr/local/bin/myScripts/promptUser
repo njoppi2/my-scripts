@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# don't forget about the \'s if you uncomment something
+if zenity --entry \
+--title="" \
+--text="What did you do in the past hour?" \
+--timeout 1020
+  then echo $?
+fi
