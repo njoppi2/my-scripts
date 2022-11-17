@@ -1,10 +1,14 @@
 #!/usr/bin/bash
 
-myDate=$(date)
-
+myDate=$(date +'%Y/%m/%d')
 cd /home/njoppi2/Pictures/dailyPrints
+myLastCommitDate=$(git log -1 --format="%at" | xargs -I{} date -d @{} +%Y/%m/%d)
 
-/usr/bin/git add .
-/usr/bin/git commit -m "commit all prints until ${myDate}"
-/usr/bin/git push -u origin main
+if [ $myLastCommitDate != $myDate ]; then
+  /usr/bin/git add . --ignore-removal
+  /usr/bin/git commit -m "commit all prints until ${myDate}"
+  /usr/bin/git push -u origin main
+else
+  echo "ja houve commit hoje, entao nao vou commitar"
+fi
 
