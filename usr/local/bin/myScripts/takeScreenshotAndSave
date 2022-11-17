@@ -1,0 +1,57 @@
+#!/usr/bin/bash
+
+export DISPLAY=":0.0"
+
+myYear=$(date +'%Y')
+myMonth=$(date +'%m')
+myDay=$(date +'%d')
+
+myYearYesterday=$(date -d "1 day ago" +'%Y')
+myMonthYesterday=$(date -d "1 day ago" +'%m')
+myDayYesterday=$(date -d "1 day ago" +'%d')
+
+# if it's 2 AM, I want to insert prints in yesterday's directory
+if [ 7 -gt $(date +'%H') ]; then
+	# ${string here} and $((int / formula here))
+	DIR="/home/njoppi2/Pictures/dailyPrints/${myYearYesterday}:${myMonthYesterday}:${myDayYesterday}/"
+	echo "antes das 7"
+# if it's after after 7AM, insert prints in today's directory
+else
+	DIR="/home/njoppi2/Pictures/dailyPrints/${myYear}:${myMonth}:${myDay}/"
+	echo "dps das 7"
+fi
+
+
+
+if [ -d "$DIR" ]; then
+  ### CURRENT DAY (or next day until 6:59 AM)
+  echo "Put print in existing folder"
+else
+  ###  Control will jump here if $DIR does NOT exists (only once per day) ###
+  ### NEW DAY (past 7)
+  mkdir -p $DIR
+  chmod 777 -R $DIR
+
+  # create previous day grid
+  /usr/local/bin/myScripts/createImageGrids "/home/njoppi2/Pictures/dailyPrints/${myYearYesterday}:${myMonthYesterday}:${myDayYesterday}"
+  echo "new day after 7AM, so new DIR created, and more!"
+
+  #TODO: se eu nao usar o computador por 1 dia vai dar problema, executar isso antes de fazer mkdir e pegar o último diretorio
+fi
+echo $DIR
+
+
+scrot -b -z '%Y:%m:%d--%H:%M:%S.png' -e 'mv $f '${DIR}
+
+
+NUM_OF_PRINT=$(find $DIR -name "2*" -printf '.' | wc -m)
+if [ $(echo "${NUM_OF_PRINT} % 4" | bc) -eq 0 ]; then
+  MSG=$(/usr/local/bin/myScripts/promptUser | head -n 1)
+  if [ -z "${MSG}" ]; then
+    echo "nenhum texto devolvido no prompt"
+    echo "" >> $DIR"whatDidYouDo.txt"
+  else
+    echo "mensagem do prompt: $MSG"
+    echo "$MSG" >> $DIR"whatDidYouDo.txt"
+  fi
+fi

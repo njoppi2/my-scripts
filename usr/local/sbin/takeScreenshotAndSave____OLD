@@ -10,10 +10,12 @@ myYearYesterday=$(date -d "1 day ago" +'%Y')
 myMonthYesterday=$(date -d "1 day ago" +'%m')
 myDayYesterday=$(date -d "1 day ago" +'%d')
 
+# if it's 2 AM, I want to insert prints in yesterday's directory
 if [ 7 -gt $(date +'%H') ]; then
 	# ${string here} and $((int / formula here))
 	DIR="/home/njoppi2/Pictures/dailyPrints/${myYearYesterday}:${myMonthYesterday}:${myDayYesterday}/"
 	echo "antes das 7"
+# if it's after after 7AM, insert prints in today's directory
 else
 	DIR="/home/njoppi2/Pictures/dailyPrints/${myYear}:${myMonth}:${myDay}/"
 	echo "dps das 7"
@@ -21,12 +23,22 @@ fi
 
 if [ -d "$DIR" ]; then
   ### Take action if $DIR exists ###
+  ### CURRENT DAY (or next day until 6:59 AM)
+  
+  if [ $(find "/home/njoppi2/Pictures/dailyPrints/${myYear}:${myMonth}:${myDay}/" -name "2*" -printf '.' | wc -m) ]; then
+    gnome-terminal
+  fi
+
   echo "Put print in existing folder"
 else
-  ###  Control will jump here if $DIR does NOT exists ###
+	###  Control will jump here if $DIR does NOT exists (only once per day) ###
+  ### NEW DAY (past 7)
   mkdir -p $DIR
   chmod 777 -R $DIR
-  echo "new DIR created"
+
+  # create previous day grid
+  /usr/local/bin/myScripts/createImageGrids "/home/njoppi2/Pictures/dailyPrints/${myYearYesterday}:${myMonthYesterday}:${myDayYesterday}"
+  echo "new day after 7AM, so new DIR created, and more!"
 fi
 echo $DIR
 
