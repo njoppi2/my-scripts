@@ -27,31 +27,34 @@ if [ -d "$DIR" ]; then
   ### CURRENT DAY (or next day until 6:59 AM)
   echo "Put print in existing folder"
 else
-  ###  Control will jump here if $DIR does NOT exists (only once per day) ###
-  ### NEW DAY (past 7)
+  ###  NEW DAY (past 7): Control will jump here if $DIR does NOT exists (only once per day) ###
+  # create previous used day's grid
+  cd /home/njoppi2/Pictures/dailyPrints
+  lastDirectoryWithA2=$(ls | grep 2 | tail -n 1)
+  /usr/local/bin/myScripts/createImageGrids "/home/njoppi2/Pictures/dailyPrints/${lastDirectoryWithA2}"
+  cd "/home/njoppi2/Pictures/dailyPrints/${lastDirectoryWithA2}"
+  find . -type f -name "*--*.png" -exec rm {} \;
+
+  # create new day's folder
   mkdir -p $DIR
   chmod 777 -R $DIR
-
-  # create previous day grid
-  /usr/local/bin/myScripts/createImageGrids "/home/njoppi2/Pictures/dailyPrints/${myYearYesterday}:${myMonthYesterday}:${myDayYesterday}"
   echo "new day after 7AM, so new DIR created, and more!"
-
-  #TODO: se eu nao usar o computador por 1 dia vai dar problema, executar isso antes de fazer mkdir e pegar o último diretorio
 fi
 echo $DIR
 
 
-scrot -b -z '%Y:%m:%d--%H:%M:%S.png' -e 'mv $f '${DIR}
+scrot -b -z '%Y:%m:%d--%H:%M:%S.png' -e 'mv $f '$DIR
+momentOfPrompt=$(date +'%H:%M')  
 
-
+cd $DIR
 NUM_OF_PRINT=$(find $DIR -name "2*" -printf '.' | wc -m)
 if [ $(echo "${NUM_OF_PRINT} % 4" | bc) -eq 0 ]; then
   MSG=$(/usr/local/bin/myScripts/promptUser | head -n 1)
   if [ -z "${MSG}" ]; then
     echo "nenhum texto devolvido no prompt"
-    echo "" >> $DIR"whatDidYouDo.txt"
+    echo "$momentOfPrompt: " >> $DIR"whatDidYouDo.txt"
   else
     echo "mensagem do prompt: $MSG"
-    echo "$MSG" >> $DIR"whatDidYouDo.txt"
+    echo "$momentOfPrompt: $MSG" >> $DIR"whatDidYouDo.txt"
   fi
 fi
