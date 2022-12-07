@@ -32,7 +32,7 @@ else
   # create previous used day's grid
   lastDirectoryWithA2=$(find $printsPath -not -path '*/.*' -type d -name "2*" | sort | tail -n 1)
   /usr/local/bin/myScripts/createImageGrids "$printsPath/$lastDirectoryWithA2"
-  find "$printsPath/$lastDirectoryWithA2" -type f -name "*--*.png" -exec rm {} \;
+  # find "$printsPath/$lastDirectoryWithA2" -type f -name "*--*.jpg" -exec rm {} \;
 
   # create new day's folder
   mkdir -p $DIR
@@ -42,11 +42,11 @@ fi
 echo $DIR
 
 
-scrot -b -z '%Y:%m:%d--%H:%M:%S.png' -e 'mv $f '$DIR
+scrot -b -z '%Y:%m:%d--%H:%M:%S.jpg' -e 'mv $f '$DIR
 momentOfPrompt=$(date +'%H:%M')  
 
 cd $DIR
-NUM_OF_PRINT=$(find $DIR -name "2*" -printf '.' | wc -m)
+NUM_OF_PRINT=$(find $DIR -name "2*--*" -printf '.' | wc -m)
 if [ $(echo "$NUM_OF_PRINT % 4" | bc) -eq 0 ]; then
   MSG=$(/usr/local/bin/myScripts/promptUser | head -n 1)
   if [ -z "$MSG" ]; then

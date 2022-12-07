@@ -5,8 +5,8 @@
 # $1 is the first argument, which should be an existing path
 cd $1
 
-#montage 20*.png -geometry +1+1 -tile 2x2 -resize 1208x679 grid%d.png
-#convert grid*.png -append -resize 1208x100000 0_AllDay.png
-
 NAME=$(echo $1 | grep -o  '[^\/]\+$')
-montage 2*.png -geometry +1+1 -tile 2x -resize 602x340 $NAME.png
+montage 2*--*.jpg -geometry +1+1 -tile 2x -resize 602x340 $NAME.jpg
+
+/usr/local/bin/myScripts/insertPromptsIntoGrid $1
+

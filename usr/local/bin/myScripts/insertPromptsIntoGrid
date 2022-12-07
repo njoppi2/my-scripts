@@ -1,0 +1,31 @@
+#!/usr/bin/bash
+
+# $1 is the first argument, which should be an existing path
+cd $1
+
+gridName=$(echo $1 | grep -o  '[^\/]\+$')
+command="convert $gridName.jpg -pointsize 30 "
+lineNum=350
+gridName=$(echo $1 | grep -o  '[^\/]\+$')
+
+# removing double quotes " from the .txt file
+sed -i "s/[\"]/''/g" whatDidYouDo.txt
+
+# IFS: internal field separator, makes the for loop iterate over every \n instead of every whitespace
+IFS=$'\n'
+
+for line in $(cat whatDidYouDo.txt)
+do
+  echo $lineNum
+  echo "counter: $line"
+
+  command="${command}-fill black -annotate +5+$lineNum \"$line\" -fill orange -annotate +7+$(($lineNum + 2)) \"$line\" "
+  lineNum=$(($lineNum + 680))
+done
+
+command="${command}-pointsize 11 -background black -fill orange pango:\"<b>$"
+command="${command}(cat whatDidYouDo.txt)</b>\" +swap -gravity Center -append 2000.jpg"
+
+echo -e "\n\n"
+echo -e "$command"
+eval $command
