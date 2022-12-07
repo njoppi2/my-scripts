@@ -3,7 +3,6 @@
 # don't forget about the \'s if you uncomment something
 if zenity --entry \
 --title="$(date +'%H:%M:%S')" \
---text="What did you do in the past hour?" \
---timeout 4740 
+--text="What did you do in the past hour?"
   then echo $?
 fi

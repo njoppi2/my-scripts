@@ -23,7 +23,6 @@ else
 fi
 
 
-
 if [ -d "$DIR" ]; then
   ### CURRENT DAY (or next day until 6:59 AM)
   echo "Put print in existing folder"
@@ -31,18 +30,19 @@ else
   ###  NEW DAY (past 7): Control will jump here if $DIR does NOT exists (only once per day) ###
   # create previous used day's grid
   lastDirectoryWithA2=$(find $printsPath -not -path '*/.*' -type d -name "2*" | sort | tail -n 1)
-  /usr/local/bin/myScripts/createImageGrids "$printsPath/$lastDirectoryWithA2"
-  # find "$printsPath/$lastDirectoryWithA2" -type f -name "*--*.jpg" -exec rm {} \;
+  /usr/local/bin/myScripts/createImageGrids "$lastDirectoryWithA2"
+  echo "$lastDirectoryWithA2"
+  # find "$lastDirectoryWithA2" -type f -name "*--*.jpg" -exec rm {} \;
 
   # create new day's folder
   mkdir -p $DIR
   chmod 777 -R $DIR
   echo "new day after 7AM, so new DIR created, and more!"
 fi
-echo $DIR
+echo "the directory of ''today'' where the current print is going to be saved is $DIR"
 
 
-scrot -b -z '%Y:%m:%d--%H:%M:%S.jpg' -e 'mv $f '$DIR
+scrot -b -z "$DIR/%Y:%m:%d--%H:%M:%S.jpg"
 momentOfPrompt=$(date +'%H:%M')  
 
 cd $DIR
@@ -51,7 +51,7 @@ if [ $(echo "$NUM_OF_PRINT % 4" | bc) -eq 0 ]; then
   MSG=$(/usr/local/bin/myScripts/promptUser | head -n 1)
   if [ -z "$MSG" ]; then
     echo "nenhum texto devolvido no prompt"
-    echo "$momentOfPrompt: " >> $DIR"/whatDidYouDo.txt"
+    echo "$momentOfPrompt: -" >> $DIR"/whatDidYouDo.txt"
   else
     echo "mensagem do prompt: $MSG"
     echo "$momentOfPrompt: $MSG" >> $DIR"/whatDidYouDo.txt"
