@@ -2,6 +2,8 @@
 
 export DISPLAY=":0.0"
 
+printsPath=/home/njoppi2/Pictures/dailyPrints
+
 myYear=$(date +'%Y')
 myMonth=$(date +'%m')
 myDay=$(date +'%d')
@@ -10,14 +12,13 @@ myYearYesterday=$(date -d "1 day ago" +'%Y')
 myMonthYesterday=$(date -d "1 day ago" +'%m')
 myDayYesterday=$(date -d "1 day ago" +'%d')
 
-# if it's 2 AM, I want to insert prints in yesterday's directory
+# if it's like 2 AM, I want to insert prints in yesterday's directory
 if [ 7 -gt $(date +'%H') ]; then
-	# ${string here} and $((int / formula here))
-	DIR="/home/njoppi2/Pictures/dailyPrints/${myYearYesterday}:${myMonthYesterday}:${myDayYesterday}/"
+	DIR="$printsPath/$myYearYesterday:$myMonthYesterday:$myDayYesterday"
 	echo "antes das 7"
-# if it's after after 7AM, insert prints in today's directory
+# if it's after 7AM, insert prints in today's directory
 else
-	DIR="/home/njoppi2/Pictures/dailyPrints/${myYear}:${myMonth}:${myDay}/"
+	DIR="$printsPath/$myYear:$myMonth:$myDay"
 	echo "dps das 7"
 fi
 
@@ -29,11 +30,9 @@ if [ -d "$DIR" ]; then
 else
   ###  NEW DAY (past 7): Control will jump here if $DIR does NOT exists (only once per day) ###
   # create previous used day's grid
-  cd /home/njoppi2/Pictures/dailyPrints
-  lastDirectoryWithA2=$(ls | grep 2 | tail -n 1)
-  /usr/local/bin/myScripts/createImageGrids "/home/njoppi2/Pictures/dailyPrints/${lastDirectoryWithA2}"
-  cd "/home/njoppi2/Pictures/dailyPrints/${lastDirectoryWithA2}"
-  find . -type f -name "*--*.png" -exec rm {} \;
+  lastDirectoryWithA2=$(find $printsPath -not -path '*/.*' -type d -name "2*" | sort | tail -n 1)
+  /usr/local/bin/myScripts/createImageGrids "$printsPath/$lastDirectoryWithA2"
+  find "$printsPath/$lastDirectoryWithA2" -type f -name "*--*.png" -exec rm {} \;
 
   # create new day's folder
   mkdir -p $DIR
@@ -48,13 +47,13 @@ momentOfPrompt=$(date +'%H:%M')
 
 cd $DIR
 NUM_OF_PRINT=$(find $DIR -name "2*" -printf '.' | wc -m)
-if [ $(echo "${NUM_OF_PRINT} % 4" | bc) -eq 0 ]; then
+if [ $(echo "$NUM_OF_PRINT % 4" | bc) -eq 0 ]; then
   MSG=$(/usr/local/bin/myScripts/promptUser | head -n 1)
-  if [ -z "${MSG}" ]; then
+  if [ -z "$MSG" ]; then
     echo "nenhum texto devolvido no prompt"
-    echo "$momentOfPrompt: " >> $DIR"whatDidYouDo.txt"
+    echo "$momentOfPrompt: " >> $DIR"/whatDidYouDo.txt"
   else
     echo "mensagem do prompt: $MSG"
-    echo "$momentOfPrompt: $MSG" >> $DIR"whatDidYouDo.txt"
+    echo "$momentOfPrompt: $MSG" >> $DIR"/whatDidYouDo.txt"
   fi
 fi
