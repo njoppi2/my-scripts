@@ -14,11 +14,11 @@ myDayYesterday=$(date -d "1 day ago" +'%d')
 
 # if it's like 2 AM, I want to insert prints in yesterday's directory
 if [ 7 -gt $(date +'%H') ]; then
-	DIR="$printsPath/$myYearYesterday:$myMonthYesterday:$myDayYesterday"
+	DIR="$printsPath/$myYearYesterday/$myYearYesterday:$myMonthYesterday/$myYearYesterday:$myMonthYesterday:$myDayYesterday"
 	echo "antes das 7"
 # if it's after 7AM, insert prints in today's directory
 else
-	DIR="$printsPath/$myYear:$myMonth:$myDay"
+	DIR="$printsPath/$myYear/$myYear:$myMonth/$myYear:$myMonth:$myDay"
 	echo "dps das 7"
 fi
 
