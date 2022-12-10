@@ -2,7 +2,7 @@
 
 # don't forget about the \'s if you uncomment something
 if zenity --entry \
---title="$(date +'%H:%M:%S')" \
---text="What did you do in the past hour?"
+--title="$(date -d '80 minutes ago' +'%H:%M:%S') - $(date +'%H:%M:%S')" \
+--text="What did you do in this interval?"
   then echo $?
 fi
