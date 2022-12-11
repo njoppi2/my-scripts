@@ -1,0 +1,73 @@
+#!/usr/bin/bash
+
+# watch out when using vim in this file, try to go into insert mode and to everything (especially new lines) manually
+# sometimes the bulb isn't detected, so i'll run the command 3 times at max, to decrease the chance that it's not detected by accident
+
+iterations=3
+for ((i=1;i<=$iterations;i++)); 
+do
+
+if [ $i -ne 1 ]; then
+	sleep 5
+fi
+
+case "$1" in
+        0)
+yee <<EOF
+1 set_power off
+quit
+EOF
+;;
+        1)
+yee <<EOF
+1 set_power on
+1 set_bright 1
+1 set_rgb 16711680
+quit
+EOF
+;;
+        2)
+yee <<EOF
+1 set_power on
+1 set_bright 1
+1 set_ct_abx 1700
+quit
+EOF
+;;
+        3)
+yee <<EOF
+1 set_power on
+1 set_bright 40
+1 set_ct_abx 3000
+quit
+EOF
+;;
+	4)
+yee <<EOF
+1 set_power on
+1 set_bright 100
+1 set_ct_abx 6500
+quit
+EOF
+;;
+	*)
+yee <<EOF
+1 set_power on
+1 set_bright 100
+1 set_ct_abx 6500
+quit
+EOF
+;;
+esac
+
+exit_code=$?
+
+if [ $i -eq $iterations ] || [ $exit_code -eq 0 ];
+then
+	echo o exit code é $exit_code
+	exit $exit_code
+fi
+
+echo o exit code é 1
+
+done
