@@ -18,13 +18,26 @@ IFS=$'\n'
 
 for line in $(cat whatDidYouDo.txt)
 do
-  command="${command}-fill black -annotate +5+$lineNum \"$line\" -fill orange -annotate +7+$(($lineNum + 2)) \"$line\" "
+  folded_line=$(echo $line | fold -w 84)
+  formated_line=""
+  for sub_line in $folded_line
+  do
+    formated_line="$formated_line$sub_line\n"
+  done
+  command="${command}
+-fill black -annotate +5+$lineNum \"$formated_line\" 
+-fill black -annotate +9+$lineNum \"$formated_line\" 
+-fill black -annotate +5+$(($lineNum + 4)) \"$formated_line\" 
+-fill black -annotate +9+$(($lineNum + 4)) \"$formated_line\" 
+-fill orange -annotate +7+$(($lineNum + 2)) \"$formated_line\" "
   lineNum=$(($lineNum + 680))
 done
 
-command="${command}-pointsize 11 -background black -fill orange pango:\"<b>$"
-command="${command}(cat whatDidYouDo.txt)</b>\" +swap -gravity Center -append $gridName.jpg"
 
-echo -e "\n\n"
-echo -e "$command"
+command="${command}-pointsize 11 -background black -fill orange pango:\"<b>$"
+command="${command}(cat whatDidYouDo.txt | fold -w 140)</b>\" +swap -gravity Center -append $gridName.jpg"
+
+# uncomment these lines for debugging:
+#echo -e "\n\n"
+#echo -e "$command"
 eval $command
