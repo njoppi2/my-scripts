@@ -1,8 +1,18 @@
 #!/bin/bash
 
 # don't forget about the \'s if you uncomment something
+
+if ! [ $1 ]; then
+  echo Which diretory?
+  exit 1
+fi
+
+last4=$(find $1 -type f -name "2*" | sort | tail -n 4)
+montage $last4 -geometry +1+1 -tile 2x2 -resize 456x256 $1/lastGrid.jpg
+
 if yad --entry \
---title="$(date -d '80 minutes ago' +'%H:%M') - $(date +'%H:%M')" \
---text="What did you do in this interval?"
+--title="What did you do during: $(date -d '80 minutes ago' +'%H:%M') - $(date +'%H:%M')?" \
+--image-on-top \
+--image $1/lastGrid.jpg
   then echo $?
 fi

@@ -45,10 +45,9 @@ echo "the directory of ''today'' where the current print is going to be saved is
 scrot -b -z "$DIR/%Y:%m:%d--%H:%M:%S.jpg"
 momentOfPrompt=$(date +'%H:%M')  
 
-cd $DIR
 NUM_OF_PRINT=$(find $DIR -name "2*--*" -printf '.' | wc -m)
 if [ $(echo "$NUM_OF_PRINT % 4" | bc) -eq 0 ]; then
-  MSG=$(/usr/local/bin/myScripts/promptUser | head -n 1)
+  MSG=$(/usr/local/bin/myScripts/promptUser $DIR | head -n 1)
   if [ -z "$MSG" ]; then
     echo "nenhum texto devolvido no prompt"
     echo "$momentOfPrompt: -" >> $DIR"/whatDidYouDo.txt"
