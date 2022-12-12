@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # don't forget about the \'s if you uncomment something
-if zenity --entry \
---title="$(date -d '80 minutes ago' +'%H:%M:%S') - $(date +'%H:%M:%S')" \
+if yad --entry \
+--title="$(date -d '80 minutes ago' +'%H:%M') - $(date +'%H:%M')" \
 --text="What did you do in this interval?"
   then echo $?
 fi
