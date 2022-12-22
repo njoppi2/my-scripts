@@ -6,7 +6,7 @@
 
 NAME=$(echo $1 | grep -o  '[^\/]\+$')
 rm $1/$NAME.jpg
-montage 2*--*.jpg -geometry +1+1 -tile 2x -resize 602x340 $1/$NAME.jpg
+montage $1/2*--*.jpg -geometry +1+1 -tile 2x -resize 602x340 $1/$NAME.jpg
 
 /usr/local/bin/myScripts/insertPromptsIntoGrid $1
 
