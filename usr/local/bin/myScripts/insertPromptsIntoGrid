@@ -26,8 +26,13 @@ do
   done
   command="${command}
 -fill black -annotate +5+$lineNum \"$formated_line\" 
+-fill black -annotate +7+$lineNum \"$formated_line\" 
 -fill black -annotate +9+$lineNum \"$formated_line\" 
+-fill black -annotate +5+$(($lineNum + 2)) \"$formated_line\" 
+-fill black -annotate +7+$(($lineNum + 2)) \"$formated_line\" 
+-fill black -annotate +9+$(($lineNum + 2)) \"$formated_line\" 
 -fill black -annotate +5+$(($lineNum + 4)) \"$formated_line\" 
+-fill black -annotate +7+$(($lineNum + 4)) \"$formated_line\" 
 -fill black -annotate +9+$(($lineNum + 4)) \"$formated_line\" 
 -fill orange -annotate +7+$(($lineNum + 2)) \"$formated_line\" "
   lineNum=$(($lineNum + 680))
