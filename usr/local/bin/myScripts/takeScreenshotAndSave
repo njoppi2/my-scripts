@@ -7,6 +7,9 @@ printsPath=/home/njoppi2/Pictures/dailyPrints
 myYear=$(date +'%Y')
 myMonth=$(date +'%m')
 myDay=$(date +'%d')
+myHour=$(date +'%H')
+myMin=$(date +'%M')
+mySec=$(date +'%S')
 
 myYearYesterday=$(date -d "1 day ago" +'%Y')
 myMonthYesterday=$(date -d "1 day ago" +'%m')
@@ -41,8 +44,9 @@ else
 fi
 echo "the directory of ''today'' where the current print is going to be saved is $DIR"
 
+#old print command, using scrot: scrot -b -z "$DIR/%Y:%m:%d--%H:%M:%S.jpg"
+import -window root $DIR/$myYear:$myMonth:$myDay--$myHour:$myMin:$mySec.jpg
 
-scrot -b -z "$DIR/%Y:%m:%d--%H:%M:%S.jpg"
 momentOfPrompt=$(date +'%H:%M')  
 
 NUM_OF_PRINT=$(find $DIR -name "2*--*" -printf '.' | wc -m)
