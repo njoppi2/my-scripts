@@ -45,7 +45,7 @@ fi
 echo "the directory of ''today'' where the current print is going to be saved is $DIR"
 
 #old print command, using scrot: scrot -b -z "$DIR/%Y:%m:%d--%H:%M:%S.jpg"
-import -window root $DIR/$myYear:$myMonth:$myDay--$myHour:$myMin:$mySec.jpg
+import -silent -window root $DIR/$myYear:$myMonth:$myDay--$myHour:$myMin:$mySec.jpg
 
 momentOfPrompt=$(date +'%H:%M')  
 
