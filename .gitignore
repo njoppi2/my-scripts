@@ -20,7 +20,8 @@
 
 
 !/home/
-/home/*
+#/home/*
+#!/home/.*
 !/home/njoppi2/
 /home/njoppi2/*
 !/home/njoppi2/.bashrc
