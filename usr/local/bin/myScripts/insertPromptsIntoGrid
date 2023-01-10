@@ -1,10 +1,10 @@
 #!/usr/bin/bash
 
 # $1 is the first argument, which should be an existing path
-cd $1
 
-gridName=$(echo $1 | grep -o  '[^\/]\+$')
-command="convert $gridName.jpg -pointsize 30 "
+gridName=$(basename $1)
+MONTH_NAME=$(dirname $1)
+command="convert $MONTH_NAME/$gridName.jpg -pointsize 30 "
 lineNum=350
 
 # removing double quotes " from the .txt file
@@ -40,7 +40,7 @@ done
 
 
 command="${command}-pointsize 11 -background black -fill orange pango:\"<b>$"
-command="${command}(cat whatDidYouDo.txt | fold -w 140)</b>\" +swap -gravity Center -append $gridName.jpg"
+command="${command}(cat whatDidYouDo.txt | fold -w 140)</b>\" +swap -gravity Center -append $MONTH_NAME/$gridName.jpg"
 
 # uncomment these lines for debugging:
 #echo -e "\n\n"
