@@ -4,19 +4,20 @@
 
 gridName=$(basename $1)
 MONTH_NAME=$(dirname $1)
+PROMPTS_PATH=$1/whatDidYouDo.txt
 command="convert $MONTH_NAME/$gridName.jpg -pointsize 30 "
 lineNum=350
 
 # removing double quotes " from the .txt file
-sed -i "s/[\"]/''/g" whatDidYouDo.txt
-sed -i "s/[&]/e/g" whatDidYouDo.txt
-sed -i "s/[\\]/\//g" whatDidYouDo.txt
-sed -i "s/</←/g" whatDidYouDo.txt
+sed -i "s/[\"]/''/g" $PROMPTS_PATH
+sed -i "s/[&]/e/g" $PROMPTS_PATH
+sed -i "s/[\\]/\//g" $PROMPTS_PATH
+sed -i "s/</←/g" $PROMPTS_PATH
 
 # IFS: internal field separator, makes the for loop iterate over every \n instead of every whitespace
 IFS=$'\n'
 
-for line in $(cat whatDidYouDo.txt)
+for line in $(cat $PROMPTS_PATH)
 do
   folded_line=$(echo $line | fold -w 84)
   formated_line=""
@@ -40,7 +41,7 @@ done
 
 
 command="${command}-pointsize 11 -background black -fill orange pango:\"<b>$"
-command="${command}(cat whatDidYouDo.txt | fold -w 140)</b>\" +swap -gravity Center -append $MONTH_NAME/$gridName.jpg"
+command="${command}(cat $PROMPTS_PATH | fold -w 140)</b>\" +swap -gravity Center -append $MONTH_NAME/$gridName.jpg"
 
 # uncomment these lines for debugging:
 #echo -e "\n\n"
