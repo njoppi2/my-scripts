@@ -1,0 +1,26 @@
+#!/usr/bin/bash
+
+printsPath=/home/njoppi2/Pictures/dailyPrints
+
+myYear=$(date +'%Y')
+myMonth=$(date +'%m')
+myDay=$(date +'%d')
+myHour=$(date +'%H')
+myMin=$(date +'%M')
+mySec=$(date +'%S')
+
+myYearYesterday=$(date -d "1 day ago" +'%Y')
+myMonthYesterday=$(date -d "1 day ago" +'%m')
+myDayYesterday=$(date -d "1 day ago" +'%d')
+
+# if it's like 2 AM, I want to insert prints in yesterday's directory
+if [ 7 -gt $(date +'%H') ]; then
+        DIR="$printsPath/$myYearYesterday/$myYearYesterday:$myMonthYesterday/$myYearYesterday:$myMonthYesterday:$myDayYesterday"
+        #antes das 7
+# if it's after 7AM, insert prints in today's directory
+else
+        DIR="$printsPath/$myYear/$myYear:$myMonth/$myYear:$myMonth:$myDay"
+        #dps das 7
+fi
+
+echo $DIR
