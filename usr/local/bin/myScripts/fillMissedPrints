@@ -1,0 +1,27 @@
+#!/usr/bin/bash
+
+customImagePath=/home/njoppi2/Pictures/dailyPrints/.checkers.jpg
+lastPrintPath=$(find $1 -type f -name "2*" | sort | tail -n 1)
+lastPrintName=$(basename $lastPrintPath)
+echo $lastPrintName
+formattedName=$(echo $lastPrintName | sed 's/\(\w*\)\:\(\w*\)\:\(\w*\)--/\1-\2-\3 /g; s/.jpg//g; s/ \(\w*\)\:\(\w\)\w\:\w*/ \1:\20:00/g')
+echo $formattedName
+lastPrintTimeInSec=$(date -d "$formattedName" "+%s")
+echo $lastPrintTimeInSec
+secondsSinceLastPrint=$((EPOCHSECONDS - lastPrintTimeInSec))
+echo $secondsSinceLastPrint
+
+minutesOfInterval=20
+intervalsWithoutPrint=$((secondsSinceLastPrint / (60 * minutesOfInterval)))
+echo $intervalsWithoutPrint
+
+DIR=$(/usr/local/bin/myScripts/currentPrintDirectory)
+for i in $(seq 1 $((intervalsWithoutPrint - 1)))
+do
+  newPrintTime=$((lastPrintTimeInSec + i * minutesOfInterval * 60))
+  newPrintName=$(echo $newPrintTime | xargs -I{} date -d @{} +"%Y:%m:%d--%H:%M:%S.jpg")
+  echo $1/$newPrintName
+  cp $customImagePath $1/$newPrintName
+  /usr/local/bin/myScripts/promptIfNeeded $DIR
+
+done

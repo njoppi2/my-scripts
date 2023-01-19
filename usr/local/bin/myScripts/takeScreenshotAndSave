@@ -15,6 +15,7 @@ DIR=$(/usr/local/bin/myScripts/currentPrintDirectory)
 
 if [ -d "$DIR" ]; then
   ### CURRENT DAY (or next day until 6:59 AM)
+  /usr/local/bin/myScripts/fillMissedPrints $DIR
   echo "Put print in existing folder"
 else
   ###  NEW DAY (past 7): Control will jump here if $DIR does NOT exists (only once per day) ###
