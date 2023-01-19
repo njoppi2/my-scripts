@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+
+DIR=$1
+
+momentOfPrompt=$(date +'%H:%M')
+
+NUM_OF_PRINT=$(find $DIR -name "2*--*" -printf '.' | wc -m)
+if [ $(echo "$NUM_OF_PRINT % 4" | bc) -eq 0 ]; then
+  MSG=$(/usr/local/bin/myScripts/promptUser $DIR | head -n 1)
+  if [ -z "$MSG" ]; then
+    echo "nenhum texto devolvido no prompt"
+    echo "$momentOfPrompt: -" >> $DIR"/whatDidYouDo.txt"
+  else
+    echo "mensagem do prompt: $MSG"
+    echo "$momentOfPrompt: $MSG" >> $DIR"/whatDidYouDo.txt"
+  fi
+fi
+

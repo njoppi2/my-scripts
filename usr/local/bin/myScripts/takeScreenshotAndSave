@@ -35,16 +35,4 @@ echo "the directory of ''today'' where the current print is going to be saved is
 #old print command, using scrot: scrot -b -z "$DIR/%Y:%m:%d--%H:%M:%S.jpg"
 import -silent -window root $DIR/$myYear:$myMonth:$myDay--$myHour:$myMin:$mySec.jpg
 
-momentOfPrompt=$(date +'%H:%M')  
-
-NUM_OF_PRINT=$(find $DIR -name "2*--*" -printf '.' | wc -m)
-if [ $(echo "$NUM_OF_PRINT % 4" | bc) -eq 0 ]; then
-  MSG=$(/usr/local/bin/myScripts/promptUser $DIR | head -n 1)
-  if [ -z "$MSG" ]; then
-    echo "nenhum texto devolvido no prompt"
-    echo "$momentOfPrompt: -" >> $DIR"/whatDidYouDo.txt"
-  else
-    echo "mensagem do prompt: $MSG"
-    echo "$momentOfPrompt: $MSG" >> $DIR"/whatDidYouDo.txt"
-  fi
-fi
+/usr/local/bin/myScripts/promptIfNeeded $DIR
