@@ -53,6 +53,14 @@ EOF
 quit
 EOF
 ;;
+        blue)
+/home/njoppi2/.cargo/bin/yee <<EOF
+1 set_power on
+1 set_bright 100
+1 set_hsv 200 100 smooth 10
+quit
+EOF
+;;
 	*)
 /home/njoppi2/.cargo/bin/yee <<EOF
 1 set_power on
