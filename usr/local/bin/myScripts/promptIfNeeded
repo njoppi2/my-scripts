@@ -2,17 +2,19 @@
 
 DIR=$1
 
-momentOfPrompt=$(date +'%H:%M')
+lastPrintPath=$(find $1 -type f -name "2*" | sort | tail -n 1)
+lastPrintName=$(basename $lastPrintPath)
+formattedName=$(echo $lastPrintName | sed 's/\(\w*\)\:\(\w*\)\:\(\w*\)--/ /g; s/.jpg//g; s/ \(\w*\)\:\(\w*\):\(\w*\)/\1:\2/g')
 
 NUM_OF_PRINT=$(find $DIR -name "2*--*" -printf '.' | wc -m)
 if [ $(echo "$NUM_OF_PRINT % 4" | bc) -eq 0 ]; then
   MSG=$(/usr/local/bin/myScripts/promptUser $DIR | head -n 1)
   if [ -z "$MSG" ]; then
     echo "nenhum texto devolvido no prompt"
-    echo "$momentOfPrompt: -" >> $DIR"/whatDidYouDo.txt"
+    echo "$formattedName: -" >> $DIR"/whatDidYouDo.txt"
   else
     echo "mensagem do prompt: $MSG"
-    echo "$momentOfPrompt: $MSG" >> $DIR"/whatDidYouDo.txt"
+    echo "$formattedName=: $MSG" >> $DIR"/whatDidYouDo.txt"
   fi
 fi
 
