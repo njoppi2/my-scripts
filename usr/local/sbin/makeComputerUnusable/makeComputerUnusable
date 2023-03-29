@@ -10,6 +10,7 @@ then
 	wmctrl -k on
 	nmcli radio wifi off
 else
+	nmcli radio wifi on
         echo diferenteDeYes
 fi
 
