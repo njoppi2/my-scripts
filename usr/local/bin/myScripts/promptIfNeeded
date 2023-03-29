@@ -5,16 +5,22 @@ DIR=$1
 lastPrintPath=$(find $1 -type f -name "2*" | sort | tail -n 1)
 lastPrintName=$(basename $lastPrintPath)
 formattedName=$(echo $lastPrintName | sed 's/\(\w*\)\:\(\w*\)\:\(\w*\)--/ /g; s/.jpg//g; s/ \(\w*\)\:\(\w*\):\(\w*\)/\1:\2/g')
+result=$(cat /usr/local/bin/myScripts/shouldPromptsAppear.txt)
+
 
 NUM_OF_PRINT=$(find $DIR -name "2*--*" -printf '.' | wc -m)
 if [ $(echo "$NUM_OF_PRINT % 4" | bc) -eq 0 ]; then
-  MSG=$(/usr/local/bin/myScripts/promptUser $DIR | head -n 1)
-  if [ -z "$MSG" ]; then
-    echo "nenhum texto devolvido no prompt"
-    echo "$formattedName: -" >> $DIR"/whatDidYouDo.txt"
+  if [ "$result" == "yes" ]; then
+    MSG=$(/usr/local/bin/myScripts/promptUser $DIR | head -n 1)
+    if [ -z "$MSG" ]; then
+      echo "nenhum texto devolvido no prompt"
+      echo "$formattedName: -" >> $DIR"/whatDidYouDo.txt"
+    else
+      echo "mensagem do prompt: $MSG"
+      echo "$formattedName: $MSG" >> $DIR"/whatDidYouDo.txt"
+    fi
   else
-    echo "mensagem do prompt: $MSG"
-    echo "$formattedName=: $MSG" >> $DIR"/whatDidYouDo.txt"
+    echo "$formattedName: **prompt omitido pois .txt != yes**" >> $DIR"/whatDidYouDo.txt"
   fi
 fi
 
