@@ -1,0 +1,21 @@
+#!/bin/bash
+
+
+
+contentPath=/usr/local/bin/myScripts/partialPromptContent.txt
+content=$(cat $contentPath)
+myHour=$(date +'%H')
+myMin=$(date +'%M')
+
+if ! [ -z "$1" ] && [ "$1" == "delete" ]; then
+  echo "DELETING the content"
+  cat $contentPath
+  echo > $contentPath
+elif [ "$1" == "cat" ] || [ "$1" == "print" ]; then
+  echo "PRINTING the content"
+  cat $contentPath 
+elif promptedText=$(yad --entry --entry-label="$content"); then
+  # WRITING to content
+  echo "$myHour:$myMin: $promptedText" >> $contentPath
+fi
+

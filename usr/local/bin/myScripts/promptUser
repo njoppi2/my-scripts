@@ -7,11 +7,14 @@ if ! [ $1 ]; then
   exit 1
 fi
 
+contentPath=/usr/local/bin/myScripts/partialPromptContent.txt
+content=$(cat $contentPath)
 last4=$(find $1 -type f -name "2*" | sort | tail -n 4)
 montage $last4 -geometry +1+1 -tile 2x2 -resize 456x256 $1/lastGrid.jpg
 lastPrompt=$(cat $1/whatDidYouDo.txt | tail -n 1)
 
 if yad --entry \
+--entry-label="$content" \
 --title="What did you do during: $(date -d '80 minutes ago' +'%H:%M') - $(date +'%H:%M')?" \
 --image-on-top \
 --image $1/lastGrid.jpg \

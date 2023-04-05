@@ -36,4 +36,4 @@ echo "the directory of ''today'' where the current print is going to be saved is
 #old print command, using scrot: scrot -b -z "$DIR/%Y:%m:%d--%H:%M:%S.jpg"
 import -silent -window root $DIR/$myYear:$myMonth:$myDay--$myHour:$myMin:$mySec.jpg
 
-/usr/local/bin/myScripts/promptIfNeeded $DIR
+/usr/local/bin/myScripts/promptIfNeeded $DIR $1

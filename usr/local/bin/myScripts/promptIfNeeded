@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 DIR=$1
+echo "flag passada (complete ou nada): " $2
 
 lastPrintPath=$(find $1 -type f -name "2*" | sort | tail -n 1)
 lastPrintName=$(basename $lastPrintPath)
@@ -12,6 +13,9 @@ NUM_OF_PRINT=$(find $DIR -name "2*--*" -printf '.' | wc -m)
 if [ $(echo "$NUM_OF_PRINT % 4" | bc) -eq 0 ]; then
   if [ "$result" == "yes" ]; then
     MSG=$(/usr/local/bin/myScripts/promptUser $DIR | head -n 1)
+    if ! [ -z "$2" ] && [ "$2" == "complete" ]; then
+      /usr/local/bin/myScripts/partialPrompt delete
+    fi
     if [ -z "$MSG" ]; then
       echo "nenhum texto devolvido no prompt"
       echo "$formattedName: -" >> $DIR"/whatDidYouDo.txt"
