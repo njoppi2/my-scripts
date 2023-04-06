@@ -14,7 +14,7 @@ montage $last4 -geometry +1+1 -tile 2x2 -resize 456x256 $1/lastGrid.jpg
 lastPrompt=$(cat $1/whatDidYouDo.txt | tail -n 1)
 
 if ! [ -z "$2" ] && [ "$2" == "complete" ]; then
-  /usr/local/bin/myScripts/partialPrompt delete
+  /usr/local/bin/myScripts/partialPrompt delete silent
 fi
 
 if yad --entry \
