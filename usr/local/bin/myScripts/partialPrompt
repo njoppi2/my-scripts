@@ -8,8 +8,10 @@ myHour=$(date +'%H')
 myMin=$(date +'%M')
 
 if ! [ -z "$1" ] && [ "$1" == "delete" ]; then
-  echo "DELETING the content"
-  cat $contentPath
+  if [ -z "$2" ] || [ "$2" != "silent" ]; then
+    echo "DELETING the content"
+    cat $contentPath
+  fi
   echo > $contentPath
 elif [ "$1" == "cat" ] || [ "$1" == "print" ]; then
   echo "PRINTING the content"

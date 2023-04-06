@@ -12,10 +12,7 @@ result=$(cat /usr/local/bin/myScripts/shouldPromptsAppear.txt)
 NUM_OF_PRINT=$(find $DIR -name "2*--*" -printf '.' | wc -m)
 if [ $(echo "$NUM_OF_PRINT % 4" | bc) -eq 0 ]; then
   if [ "$result" == "yes" ]; then
-    MSG=$(/usr/local/bin/myScripts/promptUser $DIR | head -n 1)
-    if ! [ -z "$2" ] && [ "$2" == "complete" ]; then
-      /usr/local/bin/myScripts/partialPrompt delete
-    fi
+    MSG=$(/usr/local/bin/myScripts/promptUser $DIR $2 | head -n 1)
     if [ -z "$MSG" ]; then
       echo "nenhum texto devolvido no prompt"
       echo "$formattedName: -" >> $DIR"/whatDidYouDo.txt"
