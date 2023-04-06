@@ -1,6 +1,10 @@
 #!/bin/bash
+
+myHour=$(date +'%H')
+myMin=$(date +'%M')
+
 brightnessctl -d nv_backlight set 100%
 echo "yes" > /usr/local/sbin/makeComputerUnusable/shouldComputerBecomeUnusableToday.txt
 echo "yes" > /usr/local/bin/myScripts/shouldPromptsAppear.txt
-echo > /usr/local/bin/myScripts/partialPromptContent.txt
+echo "Turned on computer at: $myHour:$myMin" > /usr/local/bin/myScripts/partialPromptContent.txt
 /usr/local/sbin/uploadToNotion/uploadDayToNotion
