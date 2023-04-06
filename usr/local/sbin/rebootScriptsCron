@@ -1,4 +1,6 @@
 #!/bin/bash
 brightnessctl -d nv_backlight set 100%
 echo "yes" > /usr/local/sbin/makeComputerUnusable/shouldComputerBecomeUnusableToday.txt
+echo "yes" > /usr/local/bin/myScripts/shouldPromptsAppear.txt
+echo > /usr/local/bin/myScripts/partialPromptContent.txt
 /usr/local/sbin/uploadToNotion/uploadDayToNotion
