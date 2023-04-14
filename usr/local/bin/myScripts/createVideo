@@ -37,7 +37,7 @@ for arg in "${@:2}"; do
         timestamp=$(date -u -d@$((t + $(date -u -d "$lastTime" +%s))) +%H:%M:%S)
         newname="$((lastNum + i + 1)).jpg"
         echo "Creating $newname"
-        convert "$image" -gravity south -pointsize 20 -annotate +0+5 "$timestamp" "$tempdir/$newname"
+        convert "$image" "$tempdir/$newname"
     done
 
     echo -e "-------------------\n"
