@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# Usage
+# createVideo aula12.mp3 first.png=00:36:30 second.png=01:00:30 third.png=01:08:30 fourth.png=01:09:00
+
+# Initialize variables
+lastImage=""
+lastNum=0
+lastTime="00:00:00"
+tempdir=$(mktemp -d)
+audioFile=$1
+
+# Loop through input arguments
+for arg in "${@:2}"; do
+    # Split argument into image and time components
+    IFS='=' read -r image time <<< "$arg"
+
+    # Remove leading zeros from time input
+    # time=$(echo "$time" | sed 's/^0*//')
+
+    # Calculate time difference between lastTime and current time
+    seconds=$(date -u -d "$time" +%s)
+    lastSeconds=$(date -u -d "$lastTime" +%s)
+    diff=$((seconds - lastSeconds))
+
+    # Get number of 30 second intervals in time difference
+    n=$((diff / 30))
+    
+    echo -e "\nNext Image\n"
+
+    # Loop to create images
+    for i in $(seq 0 $((n - 1))); do
+        # Calculate time offset for image
+        t=$((i * 30))
+
+        # Create image with timestamp
+        timestamp=$(date -u -d@$((t + $(date -u -d "$lastTime" +%s))) +%H:%M:%S)
+        newname="$((lastNum + i + 1)).jpg"
+        echo "Creating $newname"
+        convert "$image" -gravity south -pointsize 20 -annotate +0+5 "$timestamp" "$tempdir/$newname"
+    done
+
+    echo -e "-------------------\n"
+
+    # Update variables for next iteration
+    lastImage="$image"
+    lastNum=$((lastNum + n))
+    lastTime="$time"
+done
+
+ffmpeg -r 1/30 -i "$tempdir/%d.jpg" -i "$audioFile" -c:v libx264 -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" -preset medium -crf 18 -pix_fmt yuv420p -c:a copy "${audioFile%.mp3}.mp4"
+# Delete temporary directory
+rm -rf "$tempdir"
