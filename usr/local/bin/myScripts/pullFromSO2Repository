@@ -1,5 +1,0 @@
-#!/usr/bin/bash
-
-cd /home/njoppi2/projetos/ufsc/so2/epos-u-kernel
-
-/usr/bin/git pull --all
