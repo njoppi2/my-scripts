@@ -32,6 +32,10 @@
 /home/njoppi2/projetos/pessoal/*
 !/home/njoppi2/projetos/pessoal/backup/
 
+!/home/njoppi2/celular/
+/home/njoppi2/celular/*
+!/home/njoppi2/celular/images/
+
 
 !/usr/
 /usr/*
