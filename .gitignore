@@ -26,6 +26,15 @@
 !/home/njoppi2/.vimrc
 !/home/njoppi2/.bashrc
 
+!home/njoppi2/.config/
+home/njoppi2/.config/*
+!home/njoppi2/.config/Code/
+home/njoppi2/.config/Code/*
+!home/njoppi2/.config/Code/User/
+home/njoppi2/.config/Code/User/*
+!home/njoppi2/.config/Code/User/settings.json
+!home/njoppi2/.config/Code/User/keybindings.json
+
 !/home/njoppi2/projetos/
 /home/njoppi2/projetos/*
 !/home/njoppi2/projetos/pessoal/

@@ -1,0 +1,602 @@
+// Place your key bindings in this file to override the defaults
+[
+  //// TERMINAL ////
+  {
+    "key": "alt+.",
+    "command": "workbench.action.terminal.toggleTerminal",
+  },
+  {
+    "key": "alt+shift+.",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "alt+h",
+    "command": "workbench.action.terminal.resizePaneDown",
+  },
+  {
+    "key": "alt+u",
+    "command": "workbench.action.terminal.resizePaneUp",
+  },
+  {
+    "key": "alt+i",
+    "command": "workbench.action.terminal.scrollToPreviousCommand",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "capslock capslock",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus"
+  },
+  //// OTHER ////
+  {
+    "key": "f5",
+    "command": "workbench.action.reloadWindow",
+  },
+  {
+    "key": "alt+,",
+    "command": "workbench.action.toggleSidebarVisibility",
+  },
+  {
+    "key": "alt+k",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "alt+j",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "alt+space",
+    "command": "multiCommand.save",
+  },
+  /////////////////////////////   INSERTING /////////////////////////////////
+  {
+    "key": "ctrl+\\ ctrl+c",
+    "command": "extension.multiCommand.execute",
+    "args": {
+      "command": "multiCommand.ctrlVImport"
+    }
+  },
+  // {
+  //   "key": "ctrl+[",
+  //   "command": "multiCommand.createReturnStatement",
+  //   "when": "editorTextFocus",
+  // },
+  {
+    "key": "ctrl+,",
+    "command": "editor.action.insertSnippet",
+    "when": "editorTextFocus",
+    "args": {
+      "snippet": "console.log('👋 $CLIPBOARD é:', $CLIPBOARD)"
+    }
+  },
+  {
+    "key": "ctrl+.",
+    "command": "editor.action.insertSnippet",
+    "when": "editorTextFocus",
+    "args": {
+      "snippet": "console.log(`${Math.random() < .25 ? '👋' : Math.random() < .33 ? '❌' : Math.random() < .5 ? '🌲' : '🔘'}`)"
+    }
+  },
+  {
+    "key": "ctrl+;",
+    "command": "editor.action.insertSnippet",
+    "when": "editorTextFocus",
+    "args": {
+      "snippet": "console.log('%c ${Test}', 'font-weight: bold; font-size: 30px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)')"
+    }
+  },
+  {
+    "key": "capslock capslock",
+    "command": "very-smart-select.grow",
+    // "command": "expand_region",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "shift+capslock shift+capslock",
+    "command": "bracket-pair-colorizer-2.expandBracketSelection",
+    "when": "textInputFocus"
+  },
+  //////////////////////////////////    E A S Y   M O T I O N  (  M  E  T  A     G  O  G  O  )    //////////////////////////////////////////
+  {
+    "command": "metaGo.input.cancel",
+    "key": "alt+[Semicolon]",
+    "when": "editorTextFocus && metaGoInput "
+  },
+  {
+    "key": "alt+n",
+    "command": "editor.action.insertSnippet",
+    "when": "editorTextFocus",
+    "args": {
+      "snippet": "$0\n"
+    }
+  },
+  ///////////////////////////////////////////    \     M  O  D  E     //////////////////////////////////////////////////////
+  // {
+  //   "command": "multiCommand.i",
+  //   "key": "\\ i",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.o",
+  //   "key": "\\ o",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.p",
+  //   "key": "\\ p",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.j",
+  //   "key": "\\ j",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.k",
+  //   "key": "\\ k",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.l",
+  //   "key": "\\ l",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.n",
+  //   "key": "\\ n",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.n-selected",
+  //   "key": "\\ n",
+  //   "when": "editorTextFocus && editorHasSelection && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.m",
+  //   "key": "\\ m",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.h",
+  //   "key": "\\ h",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.u",
+  //   "key": "\\ u",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.u-selected",
+  //   "key": "\\ u",
+  //   "when": "editorTextFocus && editorHasSelection && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.pipe",
+  //   "key": "\\ shift+\\",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.comma",
+  //   "key": "\\ ,",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.dot",
+  //   "key": "\\ .",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.comment",
+  //   "key": "\\ ;",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.equals",
+  //   "key": "\\ =",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.hyphen",
+  //   "key": "\\ -",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.zero",
+  //   "key": "\\ 0",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.nine",
+  //   "key": "\\ 9",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "editor.action.insertSnippet",
+  //   "args": {
+  //     "snippet": " "
+  //   },
+  //   "key": "\\ [Semicolon]",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "editor.action.insertSnippet",
+  //   "args": {
+  //     "snippet": " $TM_SELECTED_TEXT$0 "
+  //   },
+  //   "key": "\\ [Semicolon]",
+  //   "when": "editorTextFocus && !findInputFocussed && editorHasSelection"
+  // },
+  // {
+  //   "command": "multiCommand.false",
+  //   "key": "\\ f",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  // {
+  //   "command": "multiCommand.true",
+  //   "key": "\\ t",
+  //   "when": "editorTextFocus && !findInputFocussed"
+  // },
+  {
+    "command": "editor.action.insertSnippet",
+    "args": {
+      "snippet": "\\"
+    },
+    "key": "\\ \\",
+    "when": "editorTextFocus && !findInputFocussed"
+  },
+  ////////////////////////////////////////////////////////
+  {
+    "command": "editor.action.nextMatchFindAction",
+    "key": "f",
+    "when": "findWidgetVisible && !findInputFocussed && vimspired.normal"
+  },
+  {
+    "command": "workbench.action.focusPreviousPart",
+    "key": "alt+[Semicolon]",
+  },
+  {
+    "key": "alt+j",
+    "command": "undo",
+    "when": "editorTextFocus  && !metaGoInput"
+  },
+  {
+    "command": "editor.action.moveLinesUpAction",
+    "when": "!suggestWidgetMultipleSuggestions && !suggestWidgetVisible && textInputFocus && !metaGoInput"
+  },
+  {
+    "key": "alt+l",
+    "command": "cursorWordRight",
+    "when": "editorTextFocus  && !metaGoInput"
+  },
+  {
+    "key": "alt+k",
+    "command": "editor.action.moveLinesDownAction",
+    "when": "!suggestWidgetMultipleSuggestions && !suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "meta+j",
+    "command": "editor.action.outdentLines",
+    "when": "editorTextFocus  && !metaGoInput"
+  },
+  {
+    "key": "meta+i",
+    "command": "editor.action.insertCursorAbove",
+    "when": "editorTextFocus  && !metaGoInput"
+  },
+  {
+    "key": "meta+l",
+    "command": "editor.action.indentLines",
+    "when": "editorTextFocus  && !metaGoInput"
+  },
+  {
+    "key": "meta+k",
+    "command": "editor.action.insertCursorBelow",
+    "when": "editorTextFocus  && !metaGoInput"
+  },
+  // {
+  //   "key": "alt+j",
+  //   "command": "list.collapse",
+  //   "when": "listFocus && !inputFocus"
+  // },
+  // {
+  //   "key": "alt+i",
+  //   "command": "list.focusUp",
+  //   "when": "listFocus && !inputFocus"
+  // },
+  // {
+  //   "key": "alt+l",
+  //   "command": "list.expand",
+  //   "when": "listFocus && !inputFocus"
+  // },
+  // {
+  //   "key": "alt+k",
+  //   "command": "list.focusDown",
+  //   "when": "listFocus && !inputFocus"
+  // },
+  {
+    "key": "alt+space",
+    "command": "filesExplorer.openFilePreserveFocus",
+    "when": "listFocus && !inputFocus"
+  },
+  /*//* {
+       "command": "editor.action.toggleRenderControlCharacter",
+       "key": "space",
+       "when": "!findInputFocussed && !config.workbench.statusBar.visible && !metaGoInput"
+    }, */
+  /////////////////////////////////////////     \S     M  O  D  E      /////////////////////////////////////////////////////////
+  {
+    "key": "[Semicolon]",
+    "command": "multiCommand.vimspired",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "[Semicolon]",
+    "command": "multiCommand.vimspiredOut",
+    "when": "editorTextFocus && vimspired.normal"
+  },
+  {
+    "key": "escape",
+    "command": "-vimspired.enterNormal",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+f",
+    "command": "workbench.action.nextEditor",
+  },
+  {
+    "key": "alt+d",
+    "command": "workbench.action.previousEditor",
+  },
+  {
+    "key": "alt+a",
+    "command": "workbench.action.moveEditorLeftInGroup",
+  },
+  {
+    "key": "alt+s alt+a",
+    "command": "workbench.action.pinEditor",
+    "when": "!activeEditorIsPinned"
+  },
+  {
+    "key": "alt+s alt+a",
+    "command": "workbench.action.unpinEditor",
+    "when": "activeEditorIsPinned"
+  },
+  {
+    "key": "alt+s alt+d",
+    "command": "multiCommand.focusOnStyle",
+    "when": ""
+  },
+  {
+    "key": "alt+s alt+q",
+    "command": "workbench.action.reopenClosedEditor",
+    "when": "!findInputFocussed"
+  },
+  //"key": "alt+s", // botar aqui algo como o ctrl shift t oou que volta pro ultimo lugar que eu tava
+  //"command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+  {
+    "key": "alt+q",
+    "command": "workbench.action.closeActiveEditor",
+  },
+  {
+    "key": "alt+w",
+    "command": "workbench.action.closeEditorsInOtherGroups",
+    "when": "multipleEditorGroups"
+  },
+  { //kkkk
+    "key": "alt+1",
+    "command": "workbench.action.toggleEditorWidths"
+  },
+  {
+    "key": "alt+s alt+h",
+    "command": "workbench.action.showCommands",
+    "when": "!findInputFocussed"
+  },
+  {
+    "key": "alt+s alt+j",
+    "command": "workbench.action.quickOpen",
+    "when": "!inQuickOpen && !findInputFocussed"
+  },
+  {
+    "key": "alt+s alt+j",
+    "command": "workbench.action.showCommands",
+    "when": "inQuickOpen && !findInputFocussed"
+  },
+  {
+    "key": "alt+s alt+k",
+    "command": "workbench.action.findInFiles",
+  },
+  {
+    "key": "alt+s alt+l",
+    "command": "actions.find",
+    "when": "!findInputFocussed"
+  },
+  {
+    "key": "alt+s alt+l",
+    "command": "closeFindWidget",
+    "when": "findWidgetVisible"
+  },
+  {
+    "key": "alt+s alt+n",
+    "command": "workbench.view.explorer",
+  },
+  {
+    "key": "alt+s alt+m",
+    "command": "workbench.view.debug",
+  },
+  {
+    "key": "alt+s alt+,",
+    "command": "workbench.view.scm",
+  },
+  {
+    "key": "alt+s alt+;",
+    "command": "workbench.view.extension.favorites-explorer",
+  },
+  // up and down ↓↑
+  {
+    "key": "alt+j",
+    "command": "workbench.action.quickOpenNavigateNextInFilePicker",
+    "when": "inQuickOpen && !findInputFocussed"
+  },
+  {
+    "key": "alt+k",
+    "command": "workbench.action.quickOpenNavigatePreviousInFilePicker",
+    "when": "inQuickOpen && !findInputFocussed"
+  },
+  {
+    "key": "alt+k",
+    "command": "history.showPrevious",
+    "when": "findInputFocussed"
+  },
+  {
+    "key": "alt+j",
+    "command": "history.showNext",
+    "when": "findInputFocussed"
+  },
+  {
+    "key": "alt+l", // nao funciona
+    "command": "acceptSelectedSuggestion",
+    "when": "inQuickOpen && !findInputFocussed"
+  },
+  {
+    "key": "alt+[Semicolon]",
+    "command": "workbench.action.focusFirstEditorGroup",
+    "when": "!editorTextFocus",
+  },
+  {
+    "key": "[Semicolon]",
+    "command": "multiCommand.unfocus",
+    "when": "findInputFocussed"
+  },
+  /* {
+       "command": "closeFindWidget",
+       "key": "[Semicolon]",
+       "when": "findWidgetVisible && !findInputFocussed"
+    }, */
+  // - editor.action.goToDeclaration
+  // - editor.action.goToTypeDefinition   pesquisar esses no default, tem uns legais la
+  // jump to definition, intellisense
+  //posso usar o keybinding mode pra escrver modo camelCase
+  //f12, algo assim pra ir pra proxima palavra "salva" memoria, mesmo depois de eu ter modificado a atual
+  //ctrl + shift + \ ao contrario
+  //https://vscode.readthedocs.io/en/latest/getstarted/keybindings/
+  //f6
+  //editorHasSelection
+  {
+    "key": "ctrl+meta+f",
+    "command": "workbench.action.quickOpen",
+    "args": ":340\n"
+  }, //importante
+  {
+    "key": "ctrl+meta+h",
+    "command": "editor.action.nextSelectionMatchFindAction",
+    "args": ":340\n"
+  },
+  /* {
+    "command": "workbench.action.toggleStatusbarVisibility",
+    "key": "[Semicolon]",
+    "when": "!findInputFocussed  && !config.workbench.statusBar.visible"
+ },
+ {
+    "command": "multiCommand.cleanBlackslashMode",
+    "key": "[Semicolon]",
+    "when": "!findInputFocussed  && !config.workbench.statusBar.visible && config.editor.renderfrolCharacters"
+ }, */
+  /* {
+    "command": "editor.action.toggleRenderControlCharacter",
+    "key": "[Space]",
+    "when": "!findInputFocussed && !config.workbench.statusBar.visible"
+ },
+ {
+  "command": "type",
+    "args": { "text": " " },
+    "key": "[Space]",
+    "when": "config.workbench.statusBar.visible"
+    }, */
+  /* NAO
+ cursorWordStartLeft / Right cursorWordStartLeft / Right cursorWordStartLeft / Right cursorWordStartLeft / Right cursorWordStartLeft / Right cursorWordStartLeft / Right
+ cursorWordEndLeft / Right
+ 
+  */
+  // {
+  //   "key": "ctrl+s",
+  //   "command": "notebook.focusNextEditor",
+  // },
+  // {
+  //   "key": "ctrl+d",
+  //   "command": "settings.action.focusSettingsFile",
+  // },
+  // {
+  //   "key": "ctrl+f",
+  //   "command": "showNextParameterHint",
+  // },
+  {
+    "key": "ctrl+g",
+    "command": "selectNextSuggestion",
+  },
+  {
+    "key": "ctrl+h",
+    "command": "breadcrumbs.selectFocused",
+  },
+  {
+    "key": "ctrl+j",
+    "command": "history.showNext",
+  },
+  // {
+  //   "key": "ctrl+s ctrl+k",
+  //   "command": "keybindings.editor.focusKeybindings",
+  // },
+  {
+    "key": "ctrl+l",
+    "command": "list.focusDown",
+  },
+  {
+    "key": "ctrl+q",
+    "command": "notifications.focusNextToast",
+  },
+  {
+    "key": "ctrl+w",
+    "command": "settings.action.focusSettingsFromSearch",
+  },
+  {
+    "key": "ctrl+e",
+    "command": "workbench.action.interactivePlayground.arrowDown",
+  },
+  {
+    "key": "ctrl+r",
+    "command": "workbench.statusBar.focusNext",
+  },
+  {
+    "key": "ctrl+t",
+    "command": "workbench.action.navigateDown",
+  },
+  //viewPortIfOutside move só se o cursor sair da vista da tela
+  //wrappedLineColumnCenter alinha o cursor nomei na linha atual
+  //podemos botar select em todos
+  //cursorWordAccessibilityRight pular pra cada começo de palavra
+  //cursorWordPartRight faz camelCase :)
+  // - svgPreview.reloadPreview
+  // "breadcrumbs.focusNext" (home/njoppi2/.config/code/user ...)
+  // isInDiffEditor
+  // - editor.action.goToDeclaration
+  // - editor.action.goToTypeDefinition   pesquisar esses no default, tem uns legais la
+  // jump to definition, intellisense
+  // https://code.visualstudio.com/docs/languages/typescript  //importante
+  {
+    "key": "shift+backspace",
+    "command": "editorScroll",
+    "args": {
+      "to": "up",
+      "by": "line",
+      "value": 3
+    }
+  },
+  // "when": "editorLangId == typescriptreact || editorLangId == typescript && editorTextFocus", // importante
+  /* {
+       "key": "alt+f",
+       "command": "workbench.action.navigateToLastEditLocation",           //vai pro ultimo lugar/linha que eu editei um texto
+    }, */
+]
