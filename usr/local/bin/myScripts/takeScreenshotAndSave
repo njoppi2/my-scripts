@@ -11,18 +11,18 @@ myHour=$(date +'%H')
 myMin=$(date +'%M')
 mySec=$(date +'%S')
 
-DIR=$(/usr/local/bin/myScripts/currentPrintDirectory)
+DIR=$(currentPrintDirectory)
 
 if [ -d "$DIR" ]; then
   ### CURRENT DAY (or next day until 6:59 AM)
-  /usr/local/bin/myScripts/fillMissedPrints $DIR
+  fillMissedPrints $DIR
   echo "Put print in existing folder"
 else
   ###  NEW DAY (past 7): Control will jump here if $DIR does NOT exists (only once per day) ###
   # create previous used day's grid
   lastDirectoryWithA2=$(find $printsPath -not -path '*/.*' -type d -name "2*" | sort | tail -n 1)
   rm $lastDirectoryWithA2/lastGrid.jpg
-  /usr/local/bin/myScripts/createImageGrids "$lastDirectoryWithA2"
+  createImageGrids "$lastDirectoryWithA2"
   echo "$lastDirectoryWithA2"
   # find "$lastDirectoryWithA2" -type f -name "*--*.jpg" -exec rm {} \;
 
@@ -36,4 +36,4 @@ echo "the directory of ''today'' where the current print is going to be saved is
 #old print command, using scrot: scrot -b -z "$DIR/%Y:%m:%d--%H:%M:%S.jpg"
 import -silent -window root $DIR/$myYear:$myMonth:$myDay--$myHour:$myMin:$mySec.jpg
 
-/usr/local/bin/myScripts/promptIfNeeded $DIR $1
+promptIfNeeded $DIR $1

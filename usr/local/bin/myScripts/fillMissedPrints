@@ -15,13 +15,13 @@ minutesOfInterval=20
 intervalsWithoutPrint=$((secondsSinceLastPrint / (60 * minutesOfInterval)))
 echo $intervalsWithoutPrint
 
-DIR=$(/usr/local/bin/myScripts/currentPrintDirectory)
+DIR=$(currentPrintDirectory)
 for i in $(seq 1 $((intervalsWithoutPrint - 1)))
 do
   newPrintTime=$((lastPrintTimeInSec + i * minutesOfInterval * 60))
   newPrintName=$(echo $newPrintTime | xargs -I{} date -d @{} +"%Y:%m:%d--%H:%M:%S.jpg")
   echo $1/$newPrintName
   cp $customImagePath $1/$newPrintName
-  /usr/local/bin/myScripts/promptIfNeeded $DIR
+  promptIfNeeded $DIR
 
 done

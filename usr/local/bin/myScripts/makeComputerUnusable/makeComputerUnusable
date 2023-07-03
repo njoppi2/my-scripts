@@ -1,7 +1,11 @@
 #!/usr/bin/bash
 export DISPLAY=:0.0
 
-result=$(cat /usr/local/sbin/makeComputerUnusable/shouldComputerBecomeUnusableToday.txt)
+currentDir=$(dirname "$0")
+textFile="shouldComputerBecomeUnusableToday.txt"
+textFilePath="${currentDir}/${textFile}"
+
+result=$(cat $textFilePath)
 if [[ "$result" == yes ]]
 then
         wmctrl -k on

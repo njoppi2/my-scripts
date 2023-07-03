@@ -10,5 +10,5 @@ MONTH_NAME=$(dirname $1)
 rm $1/$NAME.jpg
 montage $1/2*--*.* -geometry +1+1 -tile 2x -resize 602x340 $MONTH_NAME/$NAME.jpg
 
-/usr/local/bin/myScripts/insertPromptsIntoGrid $1
+insertPromptsIntoGrid $1
 

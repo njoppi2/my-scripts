@@ -1,8 +1,9 @@
 #!/bin/bash
 
+currentDir=$(dirname "$0")
+textFile="partialPromptContent.txt"
+contentPath="${currentDir}/${textFile}"
 
-
-contentPath=/usr/local/bin/myScripts/partialPromptContent.txt
 content=$(cat $contentPath)
 myHour=$(date +'%H')
 myMin=$(date +'%M')

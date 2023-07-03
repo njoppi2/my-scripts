@@ -7,14 +7,17 @@ if ! [ $1 ]; then
   exit 1
 fi
 
-contentPath=/usr/local/bin/myScripts/partialPromptContent.txt
+currentDir=$(dirname "$0")
+textFile="partialPromptContent.txt"
+contentPath="${currentDir}/${textFile}"
+
 content=$(cat $contentPath)
 last4=$(find $1 -type f -name "2*" | sort | tail -n 4)
 montage $last4 -geometry +1+1 -tile 2x2 -resize 456x256 $1/lastGrid.jpg
 lastPrompt=$(cat $1/whatDidYouDo.txt | tail -n 1)
 
 if ! [ -z "$2" ] && [ "$2" == "complete" ]; then
-  /usr/local/bin/myScripts/partialPrompt delete silent
+  partialPrompt delete silent
 fi
 
 if yad --entry \

@@ -119,4 +119,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH="/home/njoppi2/.cargo/bin:/usr/local/bin/myScripts/:$PATH"
+myScripts="/usr/local/bin/myScripts/"
+
+for directory in "$myScripts"/*; do
+    if [[ -d $directory ]]; then
+        export PATH="$directory:$PATH"
+    fi
+done
+
+export PATH="/home/njoppi2/.cargo/bin:$myScripts:$PATH"

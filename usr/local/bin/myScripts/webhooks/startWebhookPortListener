@@ -1,5 +1,9 @@
 #!/usr/bin/bash
 
-port=$(cat /usr/local/bin/myScripts/webhooks/myPort.txt)
+currentDir=$(dirname "$0")
+textFile="myPort.txt"
+textFilePath="${currentDir}/${textFile}"
 
-webhook -hooks /usr/local/bin/myScripts/webhooks/hooks.json -verbose -port "$port"
+port=$(cat $textFilePath)
+
+webhook -hooks "${currentDir}/hooks.json" -verbose -port "$port"
