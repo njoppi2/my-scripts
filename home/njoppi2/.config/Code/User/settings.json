@@ -1,7 +1,6 @@
 {
   "files.autoSave": "onFocusChange",
   "explorer.confirmDragAndDrop": true,
-  "editor.tabSize": 2,
   "window.openFilesInNewWindow": "on",
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.minimap.enabled": true,
@@ -602,8 +601,10 @@
   "keybindingMode.letterCommandMapping": [
     "a,workbench.action.toggleSidebarVisibility",
   ],
+  "multiclip.formatAfterPaste": true,
   /////////////////////////////////////////////////////////
   "vimspired.keybindings": {
+    /////// MOVING CURSOR ///////  
     "k": {
       "selecting": "cursorUpSelect",
       "default": "cursorUp"
@@ -620,331 +621,22 @@
       "selecting": "cursorRightSelect",
       "default": "cursorRight"
     },
-    "L": {
-      "selecting": [
-        "cursorWordAccessibilityRightSelect",
-        "cursorWordRightSelect"
-      ],
-      "default": [
-        // "cursorRight",
-        // "multiCommand.goRightSpace",
-        // "cancelSelection"
-        "cursorWordAccessibilityRight",
-        "cursorWordRight",
-        "cursorWordLeft"
-      ]
+    "K": {
+      "selecting": "editor.action.insertCursorAbove",
+      "default": "cursorUp"
     },
     "H": {
-      "selecting": [
-        "cursorWordAccessibilityLeftSelect"
-      ],
-      "default": [
-        "cursorLeft",
-        "multiCommand.goLeftSpace",
-        "vimspired.swapActiveAndAnchor",
-        "cancelSelection"
-      ]
+      "selecting": "cursorWordLeftSelect",
+      "default": "cursorWordStartLeft"
     },
-    //\\
-    "→": [
-      "cancelSelection",
-      {
-        "command": "editorScroll",
-        "args": {
-          "to": "up",
-          "by": "halfPage",
-          "value": 1
-        }
-      }
-    ],
-    "ĸ": [
-      "cancelSelection",
-      {
-        "command": "editorScroll",
-        "args": {
-          "to": "down",
-          "by": "halfPage",
-          "value": 1
-        }
-      }
-    ],
-    "ł": [
-      {
-        "command": "editorScroll",
-        "args": {
-          "to": "down",
-          "by": "line",
-          "value": 3
-        }
-      }
-    ],
-    "ħ": [
-      {
-        "command": "editorScroll",
-        "args": {
-          "to": "up",
-          "by": "line",
-          "value": 3
-        }
-      }
-    ],
-    //"J": { "selecting": "cursorWordLeftSelect", "default": "cursorWordStartLeft" },
-    //"L": { "selecting": "cursorWordRightSelect", "default": "cursorWordRight" },
-    // copiar e colar ↓
-    "c": [
-      "editor.action.clipboardCopyAction",
-      "cancelSelection"
-    ],
-    "v": "editor.action.clipboardPasteAction",
-    "x": "editor.action.clipboardCutAction",
-    "»": {
-      "default": [
-        "expandLineSelection",
-        "extension.multipleCopy1",
-        "deleteLeft"
-      ],
-      "selecting": [
-        "extension.multipleCopy1",
-        "deleteLeft"
-      ]
+    "J": {
+      "selecting": "editor.action.insertCursorBelow",
+      "default": "cursorDown"
     },
-    "©": {
-      "default": [
-        "expandLineSelection",
-        "extension.multipleCopy1",
-        "cancelSelection"
-      ],
-      "selecting": [
-        "extension.multipleCopy1",
-        "cancelSelection"
-      ]
+    "L": {
+      "selecting": "cursorWordRightSelect",
+      "default": "cursorWordRight"
     },
-    "“": "extension.multiplePaste1",
-    "ç": {
-      "default": [
-        "expandLineSelection",
-        "extension.multipleCopy2",
-        "cancelSelection"
-      ],
-      "selecting": [
-        "extension.multipleCopy2",
-        "cancelSelection"
-      ]
-    },
-    "ǘ": "extension.multiplePaste2",
-    "X": {
-      "default": [
-        "expandLineSelection",
-        "extension.multipleCopy3",
-        "deleteLeft"
-      ],
-      "selecting": [
-        "extension.multipleCopy3",
-        "deleteLeft"
-      ]
-    },
-    "C": {
-      "default": [
-        "expandLineSelection",
-        "extension.multipleCopy3",
-        "cancelSelection"
-      ],
-      "selecting": [
-        "extension.multipleCopy3",
-        "cancelSelection"
-      ]
-    },
-    "V": "extension.multiplePaste3",
-    // copiar e colar ↑
-    "d": {
-      "selecting": [
-        "expand_region"
-      ],
-      "default": [
-        [
-          "expand_region"
-        ],
-        // {
-        //   "k": "cursorUpSelect",
-        //   "h": "cursorLeftSelect",
-        //   "j": "cursorDownSelect",
-        //   "l": "cursorRightSelect",
-        //   "L": [
-        //     "cursorWordRightSelect"
-        //   ],
-        //   "H": "cursorWordAccessibilityLeftSelect",
-        //   " ": [
-        //     "deleteLeft",
-        //     "vimspired.enterInsert"
-        //   ],
-        //   // copiar e colar ↓
-        //   "c": [
-        //     "editor.action.clipboardCopyAction",
-        //     "cancelSelection"
-        //   ],
-        //   "v": "editor.action.clipboardPasteAction",
-        //   "x": "editor.action.clipboardCutAction",
-        //   "»": {
-        //     "default": [
-        //       "expandLineSelection",
-        //       "extension.multipleCopy1",
-        //       "deleteLeft"
-        //     ],
-        //     "selecting": [
-        //       "extension.multipleCopy1",
-        //       "deleteLeft"
-        //     ]
-        //   },
-        //   "©": {
-        //     "default": [
-        //       "expandLineSelection",
-        //       "extension.multipleCopy1",
-        //       "cancelSelection"
-        //     ],
-        //     "selecting": [
-        //       "extension.multipleCopy1",
-        //       "cancelSelection"
-        //     ]
-        //   },
-        //   "“": "extension.multiplePaste1",
-        //   "ç": {
-        //     "default": [
-        //       "expandLineSelection",
-        //       "extension.multipleCopy2",
-        //       "cancelSelection"
-        //     ],
-        //     "selecting": [
-        //       "extension.multipleCopy2",
-        //       "cancelSelection"
-        //     ]
-        //   },
-        //   "ǘ": "extension.multiplePaste2",
-        //   "X": {
-        //     "default": [
-        //       "expandLineSelection",
-        //       "extension.multipleCopy3",
-        //       "deleteLeft"
-        //     ],
-        //     "selecting": [
-        //       "extension.multipleCopy3",
-        //       "deleteLeft"
-        //     ]
-        //   },
-        //   "C": {
-        //     "default": [
-        //       "expandLineSelection",
-        //       "extension.multipleCopy3",
-        //       "cancelSelection"
-        //     ],
-        //     "selecting": [
-        //       "extension.multipleCopy3",
-        //       "cancelSelection"
-        //     ]
-        //   },
-        //   "V": "extension.multiplePaste3",
-        //   // copiar e colar ↑
-        //   "q": [
-        //     [
-        //       "expandLineSelection"
-        //     ],
-        //     {
-        //       "k": [
-        //         "cancelSelection",
-        //         {
-        //           "command": "cursorMove",
-        //           "args": {
-        //             "to": "up",
-        //             "by": "wrappedLine",
-        //             "value": 2,
-        //             "select": true,
-        //           }
-        //         },
-        //         "cursorHomeSelect"
-        //       ],
-        //       "j": "cursorDownSelect",
-        //     }
-        //   ],
-        //   "/": [
-        //     "cursorEnd",
-        //     "cursorHomeSelect",
-        //     "deleteLeft"
-        //   ],
-        //   "f": {
-        //     "selecting": "editor.action.moveSelectionToNextFindMatch",
-        //     "default": [
-        //       "metaGo.gotoBefore",
-        //       "cursorUndo",
-        //       "expandLineSelection"
-        //     ]
-        //   },
-        //   "a": {
-        //     "selecting": "cancelSelection",
-        //     "default": "undo"
-        //   },
-        //   "s": "deleteLeft",
-        //   "ß": "editor.action.joinLines",
-        //   "g": {
-        //     "g": [
-        //       "metaGo.bookmark.jumpToNext",
-        //       "metaGo.bookmark.jumpToNext"
-        //     ],
-        //     "h": {
-        //       "selecting": "cursorHomeSelect",
-        //       "default": "cursorHome"
-        //     },
-        //     "l": {
-        //       "selecting": "cursorEndSelect",
-        //       "default": "cursorEnd"
-        //     },
-        //     "k": {
-        //       "selecting": [
-        //         "vimspired.swapActiveAndAnchor",
-        //         "metaGo.spaceBlockSelectUp",
-        //         "metaGo.currentLineToCenter"
-        //       ],
-        //       "default": [
-        //         "metaGo.spaceBlockMoveUp",
-        //         "metaGo.currentLineToCenter"
-        //       ]
-        //     },
-        //     "j": {
-        //       "selecting": [
-        //         "metaGo.spaceBlockSelectDown",
-        //         "metaGo.currentLineToCenter"
-        //       ],
-        //       "default": [
-        //         "metaGo.spaceBlockMoveDown",
-        //         "metaGo.currentLineToCenter"
-        //       ]
-        //     },
-        //   },
-        //   "d": [
-        //     "cursorWordLeft",
-        //     "cursorWordRightSelect"
-        //   ],
-        //   "ð": [
-        //     "editor.action.addSelectionToNextFindMatch"
-        //   ],
-        //   "đ": [
-        //     "editor.action.addSelectionToPreviousFindMatch"
-        //   ],
-        //   "\n": [
-        //     [
-        //       {
-        //         "selecting": "multiCommand.selectedEnter",
-        //         "default": {
-        //           "command": "editor.action.insertSnippet",
-        //           "args": {
-        //             "snippet": "\n"
-        //           }
-        //         }
-        //       }
-        //     ]
-        //   ],
-        // },
-      ]
-    },
-    "ŋ": "metaGo.bookmark.toggle",
     "g": {
       //"g": ["metaGo.bookmark.jumpToNext", "metaGo.bookmark.jumpToNext"],
       "h": {
@@ -986,14 +678,185 @@
         "default": [
           "cursorBottom"
         ]
+      },
+      "d": {
+        "default": "expandLineSelection",
+        "selecting": "expandLineSelection"
       }
     },
+    "f": [
+      {
+        "selecting": "editor.action.moveSelectionToNextFindMatch",
+        "default": [
+          "metaGo.bookmark.clearInFile",
+          "metaGo.bookmark.toggle",
+          "vimspired.enterNormal",
+          "metaGo.gotoBefore"
+        ]
+      }
+    ],
+    ///////// MOVING SCREEN /////////
+    "⅞": [
+      "cancelSelection",
+      "extension.smoothscroll_scrollUp",
+    ],
+    "ĸ": [
+      "cancelSelection",
+      "extension.smoothscroll_scrollDown",
+    ],
+    "ł": [
+      {
+        "command": "editorScroll",
+        "args": {
+          "to": "down",
+          "by": "line",
+          "value": 2
+        }
+      }
+    ],
+    "ħ": [
+      {
+        "command": "editorScroll",
+        "args": {
+          "to": "up",
+          "by": "line",
+          "value": 2
+        }
+      }
+    ],
+    ///////////// COPY AND PASTE //////////////
+    // normal
+    "c": [
+      "editor.action.clipboardCopyAction",
+      "cancelSelection"
+    ],
+    "v": "editor.action.clipboardPasteAction",
+    "x": "editor.action.clipboardCutAction",
+    // alt-gr
+    "»": {
+      "default": [
+        "expandLineSelection",
+        "extension.multipleCopy1",
+        "deleteLeft"
+      ],
+      "selecting": [
+        "extension.multipleCopy1",
+        "deleteLeft"
+      ]
+    },
+    "©": {
+      "default": [
+        "expandLineSelection",
+        "extension.multipleCopy1",
+        "cancelSelection"
+      ],
+      "selecting": [
+        "extension.multipleCopy1",
+        "cancelSelection"
+      ]
+    },
+    "“": "extension.multiplePaste1",
+    // with accents 
+    "ç": {
+      "default": [
+        "expandLineSelection",
+        "extension.multipleCopy2",
+        "cancelSelection"
+      ],
+      "selecting": [
+        "extension.multipleCopy2",
+        "cancelSelection"
+      ]
+    },
+    "ǘ": "extension.multiplePaste2",
+    "X": {
+      "default": [
+        "expandLineSelection",
+        "extension.multipleCopy3",
+        "deleteLeft"
+      ],
+      "selecting": [
+        "extension.multipleCopy3",
+        "deleteLeft"
+      ]
+    },
+    "C": {
+      "default": [
+        "expandLineSelection",
+        "extension.multipleCopy3",
+        "cancelSelection"
+      ],
+      "selecting": [
+        "extension.multipleCopy3",
+        "cancelSelection"
+      ]
+    },
+    "V": "extension.multiplePaste3",
+    //// ohter
+    ///////////////// SELECT AND DELETE /////////////////
+    // select
+    "d": {
+      "selecting": [
+        "cursorWordPartRightSelect"
+      ],
+      "default": [
+        [
+          "cursorRight",
+          "cursorWordPartLeft",
+          "cursorWordPartRightSelect"
+        ]
+      ]
+    },
+    "ð": "cancelSelection",
+    "D": "editor.action.addSelectionToNextFindMatch",
+    // delete
+    "s": "deleteRight",
+    "ß": "editor.action.joinLines",
+    "q": "editor.action.deleteLines",
+    "/": [
+      "cursorEnd",
+      "cursorHomeSelect",
+      "deleteLeft"
+    ],
+    ////
+    "u": "undo",
+    "U": "redo",
+    "↓": "cursorUndo",
+    "↑": "cursorRedo",
+    "m": [
+      "metaGo.currentLineToCenter" //extension.smoothscroll_scrollCenter
+    ],
+    "n": "editor.action.insertLineAfter",
+    "p": [
+      {
+        "selecting": "vimspired.swapActiveAndAnchor",
+        "default": "metaGo.jumpToBracket"
+      }
+    ],
+    "đ": [
+      "metaGo.bookmark.jumpToNext"
+    ],
+    "\n": [
+      [
+        {
+          "selecting": "multiCommand.selectedEnter",
+          "default": {
+            "command": "editor.action.insertSnippet",
+            "args": {
+              "snippet": "\n"
+            }
+          }
+        }
+      ]
+    ],
+    //
+    "ŋ": "metaGo.bookmark.toggle",
     "e": {
       "selecting": [
         {
+          "c": "editor.action.addCommentLine",
           "h": "editor.action.moveCarretLeftAction",
           "s": "editor.action.sortLinesAscending",
-          "c": "editor.action.addCommentLine",
           " ": [
             {
               "selecting": "yo1dog.cursor-align.alignCursors",
@@ -1036,7 +899,7 @@
     "8": "editor.action.smartSelect.grow",
     "9": "breadcrumbs.focusAndSelect",
     "0": "extension.selectBackTick",
-    //f4
+    // ??????????
     "z": {
       "k": [
         {
@@ -1046,49 +909,8 @@
           }
         }
       ],
-      "→": [
-        {
-          "command": "editor.action.insertSnippet",
-          "args": {
-            "snippet": "}"
-          }
-        }
-      ],
-      "o": [
-        {
-          "command": "editor.action.insertSnippet",
-          "args": {
-            "snippet": "["
-          }
-        }
-      ],
-      "ø": [
-        {
-          "command": "editor.action.insertSnippet",
-          "args": {
-            "snippet": "]"
-          }
-        }
-      ],
-      "p": [
-        {
-          "command": "editor.action.insertSnippet",
-          "args": {
-            "snippet": "("
-          }
-        }
-      ],
-      "þ": [
-        {
-          "command": "editor.action.insertSnippet",
-          "args": {
-            "snippet": ")"
-          }
-        }
-      ],
     },
     "[": {
-      "a": "kkkkkk",
       "a": "editor.action.selectFromAnchorToCursor",
       "a": "editor.action.setSelectionAnchor",
       "a": "createCursor",
@@ -1127,152 +949,17 @@
         ]
       },
     },
-    "ð": [
-      "editor.action.addSelectionToNextFindMatch"
-    ],
-    "s": "deleteLeft",
-    "ß": "editor.action.joinLines",
-    "a": {
-      "selecting": "cancelSelection",
-      "default": "undo"
-    },
-    "æ": "redo",
-    "f": [
-      {
-        "selecting": "editor.action.moveSelectionToNextFindMatch",
-        "default": [
-          "metaGo.bookmark.clearInFile",
-          "metaGo.bookmark.toggle",
-          "vimspired.enterNormal",
-          "metaGo.gotoBefore"
-        ]
-      }
-    ],
-    "q": "editor.action.deleteLines",
-    "/": [
-      "cursorEnd",
-      "cursorHomeSelect",
-      "deleteLeft"
-    ],
-    "u": [
-      "undo"
-      // "metaGo.bookmark.jumpToNext"
-    ],
-    "↓": "cursorUndo",
-    "w": "deleteWordLeft",
-    "?": "deleteWordRight",
-    "m": [
-      "metaGo.currentLineToCenter"
-    ],
-    "n": "editor.action.insertLineAfter",
-    "p": [
-      {
-        "selecting": "vimspired.swapActiveAndAnchor",
-        "default": "metaGo.jumpToBracket"
-      }
-    ],
-    "\n": [
-      [
-        {
-          "selecting": "multiCommand.selectedEnter",
-          "default": {
-            "command": "editor.action.insertSnippet",
-            "args": {
-              "snippet": "\n"
-            }
-          }
-        }
-      ]
-    ],
     ////////////// Aqui abaixo é o espaço //////////////
     " ": {
+      "default": "vimspired.toggleSelection",
       "selecting": [
-        "deleteLeft",
-        "vimspired.enterInsert"
+        "deleteRight",
+        "vimspired.enterInsert",
+        "vimspired.cancelSelection"
       ],
+    },
+    "I": {
       "default": {
-        "k": [
-          {
-            "command": "selectby.regex",
-            "args": [
-              "braces"
-            ]
-          },
-          "very-smart-select.grow",
-          "vimspired.swapActiveAndAnchor",
-          "cursorRightSelect",
-          "vimspired.swapActiveAndAnchor",
-          "cursorLeftSelect",
-          {
-            "command": "selectby.regex",
-            "args": [
-              "braces"
-            ]
-          }
-        ],
-        "→": {
-          "command": "selectby.regex",
-          "args": [
-            "braces"
-          ]
-        },
-        "o": [
-          {
-            "command": "selectby.regex",
-            "args": [
-              "brackets"
-            ]
-          },
-          "very-smart-select.grow",
-          "vimspired.swapActiveAndAnchor",
-          "cursorRightSelect",
-          "vimspired.swapActiveAndAnchor",
-          "cursorLeftSelect",
-          {
-            "command": "selectby.regex",
-            "args": [
-              "brackets"
-            ]
-          }
-        ],
-        "ø": {
-          "command": "selectby.regex",
-          "args": [
-            "brackets"
-          ]
-        },
-        "p": [
-          "bracket-pair-colorizer-2.expandBracketSelection",
-          {
-            "command": "selectby.regex",
-            "args": [
-              "parenthesis"
-            ]
-          },
-          "vimspired.swapActiveAndAnchor",
-          "cursorRightSelect",
-          "vimspired.swapActiveAndAnchor",
-          "cursorLeftSelect",
-          "bracket-pair-colorizer-2.expandBracketSelection"
-        ],
-        "þ": {
-          "command": "selectby.regex",
-          "args": [
-            "parenthesis"
-          ]
-        },
-        "h": {
-          "command": "selectby.regex",
-          "args": [
-            "doubleQuotes"
-          ]
-        },
-        "j": {
-          "command": "selectby.regex",
-          "args": [
-            "singleQuotes"
-          ]
-        },
         "H": [
           {
             "command": "selectby.regex",
@@ -1293,7 +980,6 @@
             "space"
           ]
         },
-        "d": "vimspired.toggleSelection",
         " ": {
           "k": [
             {
@@ -1414,17 +1100,6 @@
         "default": "metaGo.jumpToBracket"
       }
     ],
-    "ṕ": [
-      {
-        "selecting": [
-          "cursorRightSelect",
-          "vimspired.swapActiveAndAnchor",
-          "cursorLeftSelect",
-          "vimspired.swapActiveAndAnchor"
-        ],
-        "default": "metaGo.jumpToBracket"
-      }
-    ],
     ",": [
       {
         "command": "editor.action.insertSnippet",
@@ -1452,6 +1127,8 @@
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
+  "extension.smoothscroll.totalDelay": 200,
+  "extension.smoothscroll.linesToScroll": 10,
   "editor.formatOnSave": true,
   "terminal.integrated.rendererType": "dom",
   "git.suggestSmartCommit": false,

@@ -241,6 +241,56 @@
   //   "when": "editorTextFocus && !findInputFocussed"
   // },
   {
+    "command": "extension.selectSingleQuote",
+    "key": "\\ '",
+    "when": "editorTextFocus && !findInputFocussed"
+  },
+  {
+    "command": "extension.selectDoubleQuote",
+    "key": "\\ shift+'",
+    "when": "editorTextFocus && !findInputFocussed"
+  },
+  {
+    "command": "extension.selectParenthesis",
+    "key": "\\ shift+9",
+    "when": "editorTextFocus && !findInputFocussed"
+  },
+  {
+    "command": "extension.selectParenthesisOuter",
+    "key": "\\ shift+0",
+    "when": "editorTextFocus && !findInputFocussed"
+  },
+  {
+    "command": "extension.selectSquareBrackets",
+    "key": "\\ [",
+    "when": "editorTextFocus && !findInputFocussed"
+  },
+  {
+    "command": "extension.selectSquareBracketsOuter",
+    "key": "\\ ]",
+    "when": "editorTextFocus && !findInputFocussed"
+  },
+  {
+    "command": "extension.selectCurlyBrackets",
+    "key": "\\ shift+[",
+    "when": "editorTextFocus && !findInputFocussed"
+  },
+  {
+    "command": "extension.selectCurlyBracketsOuter",
+    "key": "\\ shift+]",
+    "when": "editorTextFocus && !findInputFocussed"
+  },
+  {
+    "command": "extension.selectAngleBrackets",
+    "key": "\\ <",
+    "when": "editorTextFocus && !findInputFocussed"
+  },
+  {
+    "command": "extension.selectAngleBracketsOuter",
+    "key": "\\ >",
+    "when": "editorTextFocus && !findInputFocussed"
+  },
+  {
     "command": "editor.action.insertSnippet",
     "args": {
       "snippet": "\\"
@@ -593,6 +643,36 @@
       "by": "line",
       "value": 3
     }
+  },
+  {
+    "key": "ctrl+c",
+    "command": "-multiclip.copy",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+x",
+    "command": "-multiclip.cut",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+v",
+    "command": "-multiclip.regularPaste",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+v",
+    "command": "-multiclip.paste",
+    "when": "editorTextFocus && editorLangId != 'markdown'"
+  },
+  {
+    "key": "ctrl+shift+x",
+    "command": "-multiclip.cutMerge",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+c",
+    "command": "-multiclip.copyMerge",
+    "when": "editorTextFocus"
   },
   // "when": "editorLangId == typescriptreact || editorLangId == typescript && editorTextFocus", // importante
   /* {
