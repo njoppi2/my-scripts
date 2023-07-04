@@ -52,13 +52,16 @@ home/njoppi2/.config/Code/User/*
 /usr/local/*
 !/usr/local/sbin/
 /usr/local/sbin/uploadToNotion/*.txt
-/usr/local/sbin/makeComputerUnusable/*.txt
 
 !/usr/local/bin/
 /usr/local/bin/*
 !/usr/local/bin/myScripts/
 /usr/local/bin/myScripts/*.txt
+/usr/local/bin/myScripts/makeComputerUnusable/*.txt
+/usr/local/bin/myScripts/screenshotScripts/*.txt
+/usr/local/bin/myScripts/smartBulbScripts/*.txt
 /usr/local/bin/myScripts/webhooks/*.txt
+
 
 
 !/root/
