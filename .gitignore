@@ -62,6 +62,16 @@ home/njoppi2/.config/Code/User/*
 /usr/local/bin/myScripts/smartBulbScripts/*.txt
 /usr/local/bin/myScripts/webhooks/*.txt
 
+!/usr/share
+/usr/share/*
+!/usr/share/X11
+/usr/share/X11/*
+!/usr/share/X11/xkb
+/usr/share/X11/xkb/*
+!/usr/share/X11/xkb/symbols/
+/usr/share/X11/xkb/symbols/*
+!/usr/share/X11/xkb/symbols/pt2
+
 
 
 !/root/
