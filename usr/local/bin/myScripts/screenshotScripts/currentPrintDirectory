@@ -24,3 +24,8 @@ else
 fi
 
 echo $DIR
+
+# Check if the parameter "go" is passed
+if [ "$1" = "go" ]; then
+        xdg-open "$DIR"
+fi
