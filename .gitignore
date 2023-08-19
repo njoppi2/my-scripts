@@ -39,7 +39,9 @@ home/njoppi2/.config/Code/User/*
 /home/njoppi2/projetos/*
 !/home/njoppi2/projetos/pessoal/
 /home/njoppi2/projetos/pessoal/*
-!/home/njoppi2/projetos/pessoal/backup/
+!/home/njoppi2/projetos/pessoal/etc/
+/home/njoppi2/projetos/pessoal/etc/*
+!/home/njoppi2/projetos/pessoal/etc/backup
 
 !/home/njoppi2/celular/
 /home/njoppi2/celular/*
