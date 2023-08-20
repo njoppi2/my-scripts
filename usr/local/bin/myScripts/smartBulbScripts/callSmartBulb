@@ -1,33 +1,35 @@
 #!/bin/bash
 
-minute=$(date +%M)
-hour=$(date +%H)
+minute=$(date +%M | sed 's/^0*//')  # Remove leading zeros
+hour=$(date +%H | sed 's/^0*//')  # Remove leading zeros
 random_number=$((RANDOM % 4))
 
 currentDir=$(dirname "$0")
 textFile="dimmingTime.txt"
 textFilePath="${currentDir}/${textFile}"
-dimmingHour=$(cat $textFilePath)
+dimmingHour=$(cat "$textFilePath" | sed 's/^0*//')  # Remove leading zeros
 firstHour=$(( (dimmingHour + 24 - 3) % 24 ))
 secondHour=$(( (dimmingHour + 24 - 2) % 24 ))
 thirdHour=$(( (dimmingHour + 24 - 1) % 24 ))
 fourthHour=$(( (dimmingHour + 24 - 0) % 24 ))
 
+echo -n "it's $hour:$minute. "
+
 if [[ $hour -eq $firstHour && $minute -ge 30 ]] || [[ $((hour % 24)) -eq $secondHour && $minute -le 29 ]]; then
   smartBulb 3 &>/tmp/meuCronSmartBulb.log
-  echo 3
+  echo -n 3
 elif [[ $hour -eq $secondHour && $minute -ge 30 ]] || [[ $((hour % 24)) -eq $thirdHour && $minute -le 29 ]]; then
   smartBulb 2 &>/tmp/meuCronSmartBulb.log
-  echo 2
+  echo -n 2
 elif [[ $hour -eq $thirdHour && $minute -ge 30 ]] || [[ $((hour % 24)) -eq $fourthHour && $minute -le 29 ]]; then
   smartBulb 1 &>/tmp/meuCronSmartBulb.log
-  echo 1
+  echo -n 1
 elif [[ $hour -eq $fourthHour ]]; then
   smartBulb 0 &>/tmp/meuCronSmartBulb.log
-  echo 0
+  echo -n 0
 else
-  echo "your current time is either before of after the working interval"
+  echo -n "your current time is either before of after the working interval"
 #  smartBulb $random_number &>/tmp/meuCronSmartBulb.log
 fi
 
-echo "using 0 hour as: ${dimmingHour}"
+echo ". using 0 hour as: ${dimmingHour}"
