@@ -6,6 +6,8 @@ myLastCommitDate=$(git log -1 --format="%at" | xargs -I{} date -d @{} +%Y/%m/%d)
 
 if [ $myLastCommitDate != $myDate ]; then
   /usr/bin/git add . --ignore-removal
+  /usr/bin/git reset -- '*--*'
+  /usr/bin/git reset -- '*lastGrid.jpg'
   /usr/bin/git commit -m "commit all prints until ${myDate}"
   /usr/bin/git push -u origin main
 else

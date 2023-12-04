@@ -13,12 +13,22 @@ mySec=$(date +'%S')
 
 DIR=$(currentPrintDirectory)
 
+
 if [ -d "$DIR" ]; then
   ### CURRENT DAY (or next day until 6:59 AM)
   fillMissedPrints $DIR
   echo "Put print in existing folder"
 else
   ###  NEW DAY (past 7): Control will jump here if $DIR does NOT exists (only once per day) ###
+  # delete the 20m-print files from 4 months ago
+  yearMonthsAgo=$(date -d "110 days ago" +"%Y")
+  monthMonthsAgo=$(date -d "110 days ago" +"%m")
+
+  monthsAgoFolder="$printsPath/$yearMonthsAgo/$yearMonthsAgo:$monthMonthsAgo"
+  echo "will delete the 20m-prints inside: $monthsAgoFolder"
+  deleteFiles "$monthsAgoFolder"
+
+
   # create previous used day's grid
   lastDirectoryWithA2=$(find $printsPath -not -path '*/.*' -type d -name "2*" | sort | tail -n 1)
   rm $lastDirectoryWithA2/lastGrid.jpg

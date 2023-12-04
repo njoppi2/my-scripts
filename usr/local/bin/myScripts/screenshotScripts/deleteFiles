@@ -1,0 +1,32 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+  echo "No arguments provided. You should provide the path for a month-folder (like 2023:12)."
+  echo "You can enter the month-folder then run deleteFiles \$(pwd)"
+  exit 1
+fi
+
+# Get the directory path as an argument
+directory_path="$1"
+
+# Verify that the directory is inside the dailyPrints folder
+if [[ "$directory_path" != *"dailyPrints"* ]]; then
+    echo "Error: The specified directory is not inside 'dailyPrints'."
+    exit 1
+fi
+
+echo "start deleting files"
+
+# Iterate over each folder in the specified directory
+for folder in "$directory_path"/*/; do
+    # Enter the folder
+    cd "$folder" || continue
+
+    # Print and delete .jpg files with the string "--" in their names
+    find . -type f -name '*.jpg' -name '*--*' -exec sh -c 'echo "Deleting: $0"; rm -f $0' {} \;
+
+    # Return to the parent directory
+    cd "$directory_path"
+done
+
+echo "finished deleting files"

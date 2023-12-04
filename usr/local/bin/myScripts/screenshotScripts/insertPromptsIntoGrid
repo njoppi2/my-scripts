@@ -2,7 +2,7 @@
 
 if [ $# -eq 0 ]; then
   echo "No arguments provided. You should provide the path for the day-folder so I can create a grid and insert the prompts in it."
-  echo "You can enter the day-folder then run /usr/local/bin/myScripts/screenshotScripts/insertPromptsIntoGrid \$(pwd)"
+  echo "You can enter the day-folder then run insertPromptsIntoGrid \$(pwd)"
   exit 1
 else
   echo "Will create grid and insert the prompts from $1"
