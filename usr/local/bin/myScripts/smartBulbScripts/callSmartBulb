@@ -1,13 +1,13 @@
 #!/bin/bash
 
-minute=$(date +%M | sed 's/^0*//')  # Remove leading zeros
-hour=$(date +%H | sed 's/^0*//')  # Remove leading zeros
+minute=$(date +%M | sed 's/^0//')  # Remove leading zeros
+hour=$(date +%H | sed 's/^0//')  # Remove leading zeros
 random_number=$((RANDOM % 4))
 
 currentDir=$(dirname "$0")
 textFile="dimmingTime.txt"
 textFilePath="${currentDir}/${textFile}"
-dimmingHour=$(cat "$textFilePath" | sed 's/^0*//')  # Remove leading zeros
+dimmingHour=$(cat "$textFilePath" | sed 's/^0//')  # Remove leading zeros
 firstHour=$(( (dimmingHour + 24 - 3) % 24 ))
 secondHour=$(( (dimmingHour + 24 - 2) % 24 ))
 thirdHour=$(( (dimmingHour + 24 - 1) % 24 ))

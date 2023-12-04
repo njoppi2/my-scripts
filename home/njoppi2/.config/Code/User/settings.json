@@ -1156,5 +1156,5 @@
     ],
     "editor.inlineSuggest.enabled": true,
     "git.openRepositoryInParentFolders": "never",
-    "window.zoomLevel": -1
+    "window.zoomLevel": -2
 }

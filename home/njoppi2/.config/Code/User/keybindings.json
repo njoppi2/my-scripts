@@ -673,7 +673,15 @@
     "key": "ctrl+shift+c",
     "command": "-multiclip.copyMerge",
     "when": "editorTextFocus"
-  },
+},
+{
+    "key": "alt+z",
+    "command": "workbench.action.moveEditorRightInGroup"
+},
+{
+    "key": "ctrl+shift+pagedown",
+    "command": "-workbench.action.moveEditorRightInGroup"
+},
   // "when": "editorLangId == typescriptreact || editorLangId == typescript && editorTextFocus", // importante
   /* {
        "key": "alt+f",
