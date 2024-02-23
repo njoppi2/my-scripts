@@ -7,7 +7,7 @@ brightnessctl -d nv_backlight set 100%
 echo "yes" > /usr/local/bin/myScripts/makeComputerUnusable/shouldComputerBecomeUnusableToday.txt
 echo "yes" > /usr/local/bin/myScripts/screenshotScripts/shouldPromptsAppear.txt
 echo "Turned on computer at: $myHour:$myMin" > /usr/local/bin/myScripts/screenshotScripts/partialPromptContent.txt
-echo "01" > /usr/local/bin/myScripts/smartBulbScripts/dimmingTime.txt
+echo "02" > /usr/local/bin/myScripts/smartBulbScripts/dimmingTime.txt
 
 chmod a+rw /usr/local/bin/myScripts/makeComputerUnusable/shouldComputerBecomeUnusableToday.txt
 chmod a+rw /usr/local/bin/myScripts/screenshotScripts/shouldPromptsAppear.txt

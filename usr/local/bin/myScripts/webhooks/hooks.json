@@ -2,11 +2,11 @@
   {
     "id": "shutdown",
     "execute-command": "shutdown.sh",
-    "command-working-directory": "/home/njoppi2"
+    "command-working-directory": "/usr/local/bin/myScripts/webhooks"
   },
   {
     "id": "openBash",
     "execute-command": "openBash.sh",
-    "command-working-directory": "/home/njoppi2"
+    "command-working-directory": "/usr/local/bin/myScripts/webhooks"
   }
 ]
