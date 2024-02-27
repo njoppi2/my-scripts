@@ -1,0 +1,79 @@
+#!/bin/bash
+
+# Function to add files up to 1GB
+function add_files_up_to_1gb() {
+    # Check if the current directory is a git repository
+    if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+        echo "Error: Not inside a git repository."
+        exit 1
+    fi
+
+    # Store untracked files in an array, using process substitution
+    mapfile -t all_files_unique < <(git ls-files --others --exclude-standard)
+
+    # Initialize variables
+    total_size=0
+    added_files=0
+
+    # Loop through all files in the array
+    for file in "${all_files_unique[@]}"; do
+        # Decode escape sequences in the filename
+        decoded_file=$(printf '%b' "$file")
+        decoded_file="${decoded_file%\"}" # Remove leading quote
+        decoded_file="${decoded_file#\"}" # Remove trailing quote
+        # echo "Processing decoded file: $decoded_file"
+        if [ -f "$decoded_file" ]; then
+            # echo "File exists: $decoded_file"
+            file_size=$(stat -c%s "$decoded_file" 2>/dev/null)
+            # echo "File size: $file_size"
+            if [ -n "$file_size" ] && [ "$file_size" -lt 100000000 ] && [ "$((total_size + file_size))" -le 1000000000 ]; then
+                total_size=$((total_size + file_size))
+                echo "Adding file: $decoded_file"
+                git add "$decoded_file"
+                added_files=$((added_files + 1))
+            fi
+        else
+            echo "File does not exist: $decoded_file"
+        fi
+    done
+
+    echo "Added files: $added_files"
+    # Add files if there are any
+    if [ "$added_files" -gt 0 ]; then
+        echo -e "\nAdding $added_files files (Total size: $((total_size / 1000000)) MB)"
+        echo "Executing: git commit -m \"Add files\""
+        git commit -m "Add files"
+        echo -e "\nExecuting: git push origin $(git branch --show-current)"
+        git push origin "$(git branch --show-current)"
+    fi
+}
+
+# Main function
+function main() {
+    local folder="$1"
+    cd "$folder" || exit 1
+
+    while true; do
+        add_files_up_to_1gb "$folder"
+        local remaining_files=$(find "$folder" -type f -not -path '*/.git/*' -print0 | xargs -0 -I {} sh -c '[ -f "{}" ] && [ "$(stat -c%s "{}" 2>/dev/null)" -lt 100000000 ] && echo "{}"')
+        if [ -z "$remaining_files" ]; then
+            echo "No more files smaller than 100MB to add."
+            break
+        fi
+    done
+}
+
+# Check if folder parameter is provided
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <folder>"
+    exit 1
+fi
+
+# Check if the provided folder is a git repository
+if [ ! -d "$1/.git" ]; then
+    echo "Error: $1 is not a git repository."
+    exit 1
+fi
+
+# Run main function
+main "$1"
